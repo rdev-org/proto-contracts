@@ -1,0 +1,19 @@
+syntax = "proto3";
+package user;
+
+option go_package = "github.com/rdev-org/proto-contracts/pb/user";
+
+service UserService {
+  rpc Login(UserLoginRequest) returns (UserLoginResponse);
+}
+
+message UserLoginRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message UserLoginResponse {
+  string username = 1;
+  string email = 2;
+  string token = 3;
+}
