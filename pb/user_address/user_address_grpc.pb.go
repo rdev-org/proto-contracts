@@ -19,12 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserAddressService_GetAddress_FullMethodName        = "/user_address.UserAddressService/GetAddress"
-	UserAddressService_GetAllAddress_FullMethodName     = "/user_address.UserAddressService/GetAllAddress"
-	UserAddressService_CreateAddress_FullMethodName     = "/user_address.UserAddressService/CreateAddress"
-	UserAddressService_UpdateAddress_FullMethodName     = "/user_address.UserAddressService/UpdateAddress"
-	UserAddressService_DeleteAddress_FullMethodName     = "/user_address.UserAddressService/DeleteAddress"
-	UserAddressService_SetDefaultAddress_FullMethodName = "/user_address.UserAddressService/SetDefaultAddress"
+	UserAddressService_GetAddress_FullMethodName     = "/user_address.UserAddressService/GetAddress"
+	UserAddressService_ListAddress_FullMethodName    = "/user_address.UserAddressService/ListAddress"
+	UserAddressService_CreateAddress_FullMethodName  = "/user_address.UserAddressService/CreateAddress"
+	UserAddressService_UpdateAddress_FullMethodName  = "/user_address.UserAddressService/UpdateAddress"
+	UserAddressService_DeleteAddress_FullMethodName  = "/user_address.UserAddressService/DeleteAddress"
+	UserAddressService_DefaultAddress_FullMethodName = "/user_address.UserAddressService/DefaultAddress"
 )
 
 // UserAddressServiceClient is the client API for UserAddressService service.
@@ -32,11 +32,11 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserAddressServiceClient interface {
 	GetAddress(ctx context.Context, in *GetAddressRequest, opts ...grpc.CallOption) (*GetAddressResponse, error)
-	GetAllAddress(ctx context.Context, in *GetAllAddressRequest, opts ...grpc.CallOption) (*GetAllAddressResponse, error)
+	ListAddress(ctx context.Context, in *ListAddressRequest, opts ...grpc.CallOption) (*ListAddressResponse, error)
 	CreateAddress(ctx context.Context, in *CreateAddressRequest, opts ...grpc.CallOption) (*CreateAddressResponse, error)
 	UpdateAddress(ctx context.Context, in *UpdateAddressRequest, opts ...grpc.CallOption) (*UpdateAddressResponse, error)
 	DeleteAddress(ctx context.Context, in *DeleteAddressRequest, opts ...grpc.CallOption) (*DeleteAddressResponse, error)
-	SetDefaultAddress(ctx context.Context, in *SetDefaultAddressRequest, opts ...grpc.CallOption) (*SetDefaultAddressResponse, error)
+	DefaultAddress(ctx context.Context, in *DefaultAddressRequest, opts ...grpc.CallOption) (*DefaultAddressResponse, error)
 }
 
 type userAddressServiceClient struct {
@@ -57,10 +57,10 @@ func (c *userAddressServiceClient) GetAddress(ctx context.Context, in *GetAddres
 	return out, nil
 }
 
-func (c *userAddressServiceClient) GetAllAddress(ctx context.Context, in *GetAllAddressRequest, opts ...grpc.CallOption) (*GetAllAddressResponse, error) {
+func (c *userAddressServiceClient) ListAddress(ctx context.Context, in *ListAddressRequest, opts ...grpc.CallOption) (*ListAddressResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAllAddressResponse)
-	err := c.cc.Invoke(ctx, UserAddressService_GetAllAddress_FullMethodName, in, out, cOpts...)
+	out := new(ListAddressResponse)
+	err := c.cc.Invoke(ctx, UserAddressService_ListAddress_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,10 +97,10 @@ func (c *userAddressServiceClient) DeleteAddress(ctx context.Context, in *Delete
 	return out, nil
 }
 
-func (c *userAddressServiceClient) SetDefaultAddress(ctx context.Context, in *SetDefaultAddressRequest, opts ...grpc.CallOption) (*SetDefaultAddressResponse, error) {
+func (c *userAddressServiceClient) DefaultAddress(ctx context.Context, in *DefaultAddressRequest, opts ...grpc.CallOption) (*DefaultAddressResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(SetDefaultAddressResponse)
-	err := c.cc.Invoke(ctx, UserAddressService_SetDefaultAddress_FullMethodName, in, out, cOpts...)
+	out := new(DefaultAddressResponse)
+	err := c.cc.Invoke(ctx, UserAddressService_DefaultAddress_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,11 +112,11 @@ func (c *userAddressServiceClient) SetDefaultAddress(ctx context.Context, in *Se
 // for forward compatibility.
 type UserAddressServiceServer interface {
 	GetAddress(context.Context, *GetAddressRequest) (*GetAddressResponse, error)
-	GetAllAddress(context.Context, *GetAllAddressRequest) (*GetAllAddressResponse, error)
+	ListAddress(context.Context, *ListAddressRequest) (*ListAddressResponse, error)
 	CreateAddress(context.Context, *CreateAddressRequest) (*CreateAddressResponse, error)
 	UpdateAddress(context.Context, *UpdateAddressRequest) (*UpdateAddressResponse, error)
 	DeleteAddress(context.Context, *DeleteAddressRequest) (*DeleteAddressResponse, error)
-	SetDefaultAddress(context.Context, *SetDefaultAddressRequest) (*SetDefaultAddressResponse, error)
+	DefaultAddress(context.Context, *DefaultAddressRequest) (*DefaultAddressResponse, error)
 	mustEmbedUnimplementedUserAddressServiceServer()
 }
 
@@ -130,8 +130,8 @@ type UnimplementedUserAddressServiceServer struct{}
 func (UnimplementedUserAddressServiceServer) GetAddress(context.Context, *GetAddressRequest) (*GetAddressResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetAddress not implemented")
 }
-func (UnimplementedUserAddressServiceServer) GetAllAddress(context.Context, *GetAllAddressRequest) (*GetAllAddressResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method GetAllAddress not implemented")
+func (UnimplementedUserAddressServiceServer) ListAddress(context.Context, *ListAddressRequest) (*ListAddressResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListAddress not implemented")
 }
 func (UnimplementedUserAddressServiceServer) CreateAddress(context.Context, *CreateAddressRequest) (*CreateAddressResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method CreateAddress not implemented")
@@ -142,8 +142,8 @@ func (UnimplementedUserAddressServiceServer) UpdateAddress(context.Context, *Upd
 func (UnimplementedUserAddressServiceServer) DeleteAddress(context.Context, *DeleteAddressRequest) (*DeleteAddressResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteAddress not implemented")
 }
-func (UnimplementedUserAddressServiceServer) SetDefaultAddress(context.Context, *SetDefaultAddressRequest) (*SetDefaultAddressResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method SetDefaultAddress not implemented")
+func (UnimplementedUserAddressServiceServer) DefaultAddress(context.Context, *DefaultAddressRequest) (*DefaultAddressResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DefaultAddress not implemented")
 }
 func (UnimplementedUserAddressServiceServer) mustEmbedUnimplementedUserAddressServiceServer() {}
 func (UnimplementedUserAddressServiceServer) testEmbeddedByValue()                            {}
@@ -184,20 +184,20 @@ func _UserAddressService_GetAddress_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserAddressService_GetAllAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAllAddressRequest)
+func _UserAddressService_ListAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAddressRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserAddressServiceServer).GetAllAddress(ctx, in)
+		return srv.(UserAddressServiceServer).ListAddress(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserAddressService_GetAllAddress_FullMethodName,
+		FullMethod: UserAddressService_ListAddress_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserAddressServiceServer).GetAllAddress(ctx, req.(*GetAllAddressRequest))
+		return srv.(UserAddressServiceServer).ListAddress(ctx, req.(*ListAddressRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -256,20 +256,20 @@ func _UserAddressService_DeleteAddress_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserAddressService_SetDefaultAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetDefaultAddressRequest)
+func _UserAddressService_DefaultAddress_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DefaultAddressRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserAddressServiceServer).SetDefaultAddress(ctx, in)
+		return srv.(UserAddressServiceServer).DefaultAddress(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserAddressService_SetDefaultAddress_FullMethodName,
+		FullMethod: UserAddressService_DefaultAddress_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserAddressServiceServer).SetDefaultAddress(ctx, req.(*SetDefaultAddressRequest))
+		return srv.(UserAddressServiceServer).DefaultAddress(ctx, req.(*DefaultAddressRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -286,8 +286,8 @@ var UserAddressService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserAddressService_GetAddress_Handler,
 		},
 		{
-			MethodName: "GetAllAddress",
-			Handler:    _UserAddressService_GetAllAddress_Handler,
+			MethodName: "ListAddress",
+			Handler:    _UserAddressService_ListAddress_Handler,
 		},
 		{
 			MethodName: "CreateAddress",
@@ -302,8 +302,8 @@ var UserAddressService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserAddressService_DeleteAddress_Handler,
 		},
 		{
-			MethodName: "SetDefaultAddress",
-			Handler:    _UserAddressService_SetDefaultAddress_Handler,
+			MethodName: "DefaultAddress",
+			Handler:    _UserAddressService_DefaultAddress_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

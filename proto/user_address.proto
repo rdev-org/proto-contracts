@@ -1,52 +1,33 @@
 syntax = "proto3";
+
 package user_address;
 
 option go_package = "github.com/rdev-org/proto-contracts/pb/user_address";
 
-import "google/protobuf/timestamp.proto";
+import "common/meta.proto";
+import "common/filter.proto";
+import "common/pagination.proto";
 
 service UserAddressService {
   rpc GetAddress(GetAddressRequest) returns (GetAddressResponse);
-  rpc GetAllAddress(GetAllAddressRequest) returns (GetAllAddressResponse);
+  rpc ListAddress(ListAddressRequest) returns (ListAddressResponse);
   rpc CreateAddress(CreateAddressRequest) returns (CreateAddressResponse);
   rpc UpdateAddress(UpdateAddressRequest) returns (UpdateAddressResponse);
   rpc DeleteAddress(DeleteAddressRequest) returns (DeleteAddressResponse);
-  rpc SetDefaultAddress(SetDefaultAddressRequest) returns (SetDefaultAddressResponse);
+  rpc DefaultAddress(DefaultAddressRequest) returns (DefaultAddressResponse);
 }
 
 message Address {
-  int64                     id             = 1;
-  string                    user_id        = 2;
-  string                    address_line1  = 3;
-  string                    address_line2  = 4;
-  string                    city           = 5;
-  string                    state_province = 6;
-  string                    postal_code    = 7;
-  string                    country        = 8;
-  bool                      is_default     = 9;
-  string                    address_type   = 10;
-  string                    status         = 11;
-  string                    uuid           = 12;
-  google.protobuf.Timestamp created_at     = 13;
-  google.protobuf.Timestamp updated_at     = 14;
-  google.protobuf.Timestamp deleted_at     = 15;
-}
-
-message AddressFilter {
-  string city    = 1;
-  string country = 2;
-  string status  = 4;
-  string search  = 5;
-  string sort    = 6;
-}
-
-message PaginationRequest {
-  int64 page_size = 1;
-  int64 page      = 2;
-}
-
-message PaginationResponse {
-  int64 total_count = 1;
+  common.Metadata meta           = 1;
+  string          user_id        = 2;
+  string          address_line1  = 3;
+  string          address_line2  = 4;
+  string          city           = 5;
+  string          state_province = 6;
+  string          postal_code    = 7;
+  string          country        = 8;
+  bool            is_default     = 9;
+  string          address_type   = 10;
 }
 
 message GetAddressRequest {
@@ -57,15 +38,15 @@ message GetAddressResponse {
   Address address = 1;
 }
 
-message GetAllAddressRequest {
-  string            user_id    = 1;
-  AddressFilter     filter     = 2;
-  PaginationRequest pagination = 3;
+message ListAddressRequest {
+  string                   user_id    = 1;
+  common.Filter            filter     = 2;
+  common.PaginationRequest pagination = 3;
 }
 
-message GetAllAddressResponse {
-  repeated Address   address    = 1;
-  PaginationResponse pagination = 2;
+message ListAddressResponse {
+  repeated Address          address    = 1;
+  common.PaginationResponse pagination = 2;
 }
 
 message CreateAddressRequest {
@@ -89,14 +70,14 @@ message DeleteAddressRequest {
 }
 
 message DeleteAddressResponse {
-  string success = 1;
+  string message = 1;
 }
 
-message SetDefaultAddressRequest {
+message DefaultAddressRequest {
   string uuid    = 1;
   string user_id = 2;
 }
 
-message SetDefaultAddressResponse {
+message DefaultAddressResponse {
   Address address = 1;
 }
