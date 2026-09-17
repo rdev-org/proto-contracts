@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package notification_email;
+
+option go_package = "github.com/rdev-org/proto-contracts/pb/notification_email";
+
+import "google/protobuf/timestamp.proto";
+
+service NotificationEmailService {
+  rpc RegisterEmail(RegisterEmailRequest) returns (RegisterEmailResponse);
+  rpc ResetPasswordEmail(ResetPasswordEmailRequest) returns (ResetPasswordEmailResponse);
+}
+
+message Email {
+  string recipient = 1;
+  string subject   = 2;
+}
+
+message RegisterEmailRequest {
+  Email email = 1;
+}
+
+message RegisterEmailResponse {
+  string                    message = 1;
+  google.protobuf.Timestamp sent_at = 2;
+}
+
+message ResetPasswordEmailRequest {
+  Email email = 1;
+}
+
+message ResetPasswordEmailResponse {
+  string                    message = 1;
+  google.protobuf.Timestamp sent_at = 2;
+}

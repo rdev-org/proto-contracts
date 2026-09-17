@@ -39,3 +39,9 @@ Generate User Preference Proto
 ```bash
 protoc -I=./proto --go_out=./pb/user_preference --go_opt=paths=source_relative --go-grpc_out=./pb/user_preference --go-grpc_opt=paths=source_relative proto/user_preference.proto
 ```
+
+Generate Notification Email Proto
+
+```bash
+protoc -I=./proto --go_out=./pb/notification_email --go_opt=paths=source_relative --go-grpc_out=./pb/notification_email --go-grpc_opt=paths=source_relative proto/notification_email.proto
+```

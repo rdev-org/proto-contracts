@@ -9,6 +9,7 @@ package user_credential
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -533,11 +534,107 @@ func (x *ResetPasswordResponse) GetMessage() string {
 	return ""
 }
 
+type ForgetPasswordRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ForgetPasswordRequest) Reset() {
+	*x = ForgetPasswordRequest{}
+	mi := &file_user_credential_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ForgetPasswordRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForgetPasswordRequest) ProtoMessage() {}
+
+func (x *ForgetPasswordRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_credential_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForgetPasswordRequest.ProtoReflect.Descriptor instead.
+func (*ForgetPasswordRequest) Descriptor() ([]byte, []int) {
+	return file_user_credential_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *ForgetPasswordRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type ForgetPasswordResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	SentAt        *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=sent_at,json=sentAt,proto3" json:"sent_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ForgetPasswordResponse) Reset() {
+	*x = ForgetPasswordResponse{}
+	mi := &file_user_credential_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ForgetPasswordResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ForgetPasswordResponse) ProtoMessage() {}
+
+func (x *ForgetPasswordResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_credential_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ForgetPasswordResponse.ProtoReflect.Descriptor instead.
+func (*ForgetPasswordResponse) Descriptor() ([]byte, []int) {
+	return file_user_credential_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *ForgetPasswordResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *ForgetPasswordResponse) GetSentAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.SentAt
+	}
+	return nil
+}
+
 var File_user_credential_proto protoreflect.FileDescriptor
 
 const file_user_credential_proto_rawDesc = "" +
 	"\n" +
-	"\x15user_credential.proto\x12\x0fuser_credential\"F\n" +
+	"\x15user_credential.proto\x12\x0fuser_credential\x1a\x1fgoogle/protobuf/timestamp.proto\"F\n" +
 	"\fLoginRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"k\n" +
@@ -566,13 +663,19 @@ const file_user_credential_proto_rawDesc = "" +
 	"\x04uuid\x18\x03 \x01(\tR\x04uuid\x12\x14\n" +
 	"\x05token\x18\x04 \x01(\tR\x05token\"1\n" +
 	"\x15ResetPasswordResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\xdc\x03\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"-\n" +
+	"\x15ForgetPasswordRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"g\n" +
+	"\x16ForgetPasswordResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
+	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt2\xbf\x04\n" +
 	"\x15UserCredentialService\x12F\n" +
 	"\x05Login\x12\x1d.user_credential.LoginRequest\x1a\x1e.user_credential.LoginResponse\x12O\n" +
 	"\bRegister\x12 .user_credential.RegisterRequest\x1a!.user_credential.RegisterResponse\x12g\n" +
 	"\x10DeleteCredential\x12(.user_credential.DeleteCredentialRequest\x1a).user_credential.DeleteCredentialResponse\x12a\n" +
 	"\x0eUpdatePassword\x12&.user_credential.UpdatePasswordRequest\x1a'.user_credential.UpdatePasswordResponse\x12^\n" +
-	"\rResetPassword\x12%.user_credential.ResetPasswordRequest\x1a&.user_credential.ResetPasswordResponseB8Z6github.com/rdev-org/proto-contracts/pb/user_credentialb\x06proto3"
+	"\rResetPassword\x12%.user_credential.ResetPasswordRequest\x1a&.user_credential.ResetPasswordResponse\x12a\n" +
+	"\x0eForgetPassword\x12&.user_credential.ForgetPasswordRequest\x1a'.user_credential.ForgetPasswordResponseB8Z6github.com/rdev-org/proto-contracts/pb/user_credentialb\x06proto3"
 
 var (
 	file_user_credential_proto_rawDescOnce sync.Once
@@ -586,7 +689,7 @@ func file_user_credential_proto_rawDescGZIP() []byte {
 	return file_user_credential_proto_rawDescData
 }
 
-var file_user_credential_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_user_credential_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_user_credential_proto_goTypes = []any{
 	(*LoginRequest)(nil),             // 0: user_credential.LoginRequest
 	(*LoginResponse)(nil),            // 1: user_credential.LoginResponse
@@ -598,23 +701,29 @@ var file_user_credential_proto_goTypes = []any{
 	(*UpdatePasswordResponse)(nil),   // 7: user_credential.UpdatePasswordResponse
 	(*ResetPasswordRequest)(nil),     // 8: user_credential.ResetPasswordRequest
 	(*ResetPasswordResponse)(nil),    // 9: user_credential.ResetPasswordResponse
+	(*ForgetPasswordRequest)(nil),    // 10: user_credential.ForgetPasswordRequest
+	(*ForgetPasswordResponse)(nil),   // 11: user_credential.ForgetPasswordResponse
+	(*timestamppb.Timestamp)(nil),    // 12: google.protobuf.Timestamp
 }
 var file_user_credential_proto_depIdxs = []int32{
-	0, // 0: user_credential.UserCredentialService.Login:input_type -> user_credential.LoginRequest
-	2, // 1: user_credential.UserCredentialService.Register:input_type -> user_credential.RegisterRequest
-	4, // 2: user_credential.UserCredentialService.DeleteCredential:input_type -> user_credential.DeleteCredentialRequest
-	6, // 3: user_credential.UserCredentialService.UpdatePassword:input_type -> user_credential.UpdatePasswordRequest
-	8, // 4: user_credential.UserCredentialService.ResetPassword:input_type -> user_credential.ResetPasswordRequest
-	1, // 5: user_credential.UserCredentialService.Login:output_type -> user_credential.LoginResponse
-	3, // 6: user_credential.UserCredentialService.Register:output_type -> user_credential.RegisterResponse
-	5, // 7: user_credential.UserCredentialService.DeleteCredential:output_type -> user_credential.DeleteCredentialResponse
-	7, // 8: user_credential.UserCredentialService.UpdatePassword:output_type -> user_credential.UpdatePasswordResponse
-	9, // 9: user_credential.UserCredentialService.ResetPassword:output_type -> user_credential.ResetPasswordResponse
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	12, // 0: user_credential.ForgetPasswordResponse.sent_at:type_name -> google.protobuf.Timestamp
+	0,  // 1: user_credential.UserCredentialService.Login:input_type -> user_credential.LoginRequest
+	2,  // 2: user_credential.UserCredentialService.Register:input_type -> user_credential.RegisterRequest
+	4,  // 3: user_credential.UserCredentialService.DeleteCredential:input_type -> user_credential.DeleteCredentialRequest
+	6,  // 4: user_credential.UserCredentialService.UpdatePassword:input_type -> user_credential.UpdatePasswordRequest
+	8,  // 5: user_credential.UserCredentialService.ResetPassword:input_type -> user_credential.ResetPasswordRequest
+	10, // 6: user_credential.UserCredentialService.ForgetPassword:input_type -> user_credential.ForgetPasswordRequest
+	1,  // 7: user_credential.UserCredentialService.Login:output_type -> user_credential.LoginResponse
+	3,  // 8: user_credential.UserCredentialService.Register:output_type -> user_credential.RegisterResponse
+	5,  // 9: user_credential.UserCredentialService.DeleteCredential:output_type -> user_credential.DeleteCredentialResponse
+	7,  // 10: user_credential.UserCredentialService.UpdatePassword:output_type -> user_credential.UpdatePasswordResponse
+	9,  // 11: user_credential.UserCredentialService.ResetPassword:output_type -> user_credential.ResetPasswordResponse
+	11, // 12: user_credential.UserCredentialService.ForgetPassword:output_type -> user_credential.ForgetPasswordResponse
+	7,  // [7:13] is the sub-list for method output_type
+	1,  // [1:7] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_user_credential_proto_init() }
@@ -628,7 +737,7 @@ func file_user_credential_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_credential_proto_rawDesc), len(file_user_credential_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

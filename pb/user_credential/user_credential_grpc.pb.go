@@ -24,6 +24,7 @@ const (
 	UserCredentialService_DeleteCredential_FullMethodName = "/user_credential.UserCredentialService/DeleteCredential"
 	UserCredentialService_UpdatePassword_FullMethodName   = "/user_credential.UserCredentialService/UpdatePassword"
 	UserCredentialService_ResetPassword_FullMethodName    = "/user_credential.UserCredentialService/ResetPassword"
+	UserCredentialService_ForgetPassword_FullMethodName   = "/user_credential.UserCredentialService/ForgetPassword"
 )
 
 // UserCredentialServiceClient is the client API for UserCredentialService service.
@@ -35,6 +36,7 @@ type UserCredentialServiceClient interface {
 	DeleteCredential(ctx context.Context, in *DeleteCredentialRequest, opts ...grpc.CallOption) (*DeleteCredentialResponse, error)
 	UpdatePassword(ctx context.Context, in *UpdatePasswordRequest, opts ...grpc.CallOption) (*UpdatePasswordResponse, error)
 	ResetPassword(ctx context.Context, in *ResetPasswordRequest, opts ...grpc.CallOption) (*ResetPasswordResponse, error)
+	ForgetPassword(ctx context.Context, in *ForgetPasswordRequest, opts ...grpc.CallOption) (*ForgetPasswordResponse, error)
 }
 
 type userCredentialServiceClient struct {
@@ -95,6 +97,16 @@ func (c *userCredentialServiceClient) ResetPassword(ctx context.Context, in *Res
 	return out, nil
 }
 
+func (c *userCredentialServiceClient) ForgetPassword(ctx context.Context, in *ForgetPasswordRequest, opts ...grpc.CallOption) (*ForgetPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ForgetPasswordResponse)
+	err := c.cc.Invoke(ctx, UserCredentialService_ForgetPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserCredentialServiceServer is the server API for UserCredentialService service.
 // All implementations must embed UnimplementedUserCredentialServiceServer
 // for forward compatibility.
@@ -104,6 +116,7 @@ type UserCredentialServiceServer interface {
 	DeleteCredential(context.Context, *DeleteCredentialRequest) (*DeleteCredentialResponse, error)
 	UpdatePassword(context.Context, *UpdatePasswordRequest) (*UpdatePasswordResponse, error)
 	ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error)
+	ForgetPassword(context.Context, *ForgetPasswordRequest) (*ForgetPasswordResponse, error)
 	mustEmbedUnimplementedUserCredentialServiceServer()
 }
 
@@ -128,6 +141,9 @@ func (UnimplementedUserCredentialServiceServer) UpdatePassword(context.Context, 
 }
 func (UnimplementedUserCredentialServiceServer) ResetPassword(context.Context, *ResetPasswordRequest) (*ResetPasswordResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ResetPassword not implemented")
+}
+func (UnimplementedUserCredentialServiceServer) ForgetPassword(context.Context, *ForgetPasswordRequest) (*ForgetPasswordResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ForgetPassword not implemented")
 }
 func (UnimplementedUserCredentialServiceServer) mustEmbedUnimplementedUserCredentialServiceServer() {}
 func (UnimplementedUserCredentialServiceServer) testEmbeddedByValue()                               {}
@@ -240,6 +256,24 @@ func _UserCredentialService_ResetPassword_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserCredentialService_ForgetPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ForgetPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserCredentialServiceServer).ForgetPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserCredentialService_ForgetPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserCredentialServiceServer).ForgetPassword(ctx, req.(*ForgetPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserCredentialService_ServiceDesc is the grpc.ServiceDesc for UserCredentialService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -266,6 +300,10 @@ var UserCredentialService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResetPassword",
 			Handler:    _UserCredentialService_ResetPassword_Handler,
+		},
+		{
+			MethodName: "ForgetPassword",
+			Handler:    _UserCredentialService_ForgetPassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
