@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package user_preference;
+
+option go_package = "github.com/rdev-org/proto-contracts/pb/user_preference";
+
+import "common/meta.proto";
+import "common/filter.proto";
+import "common/pagination.proto";
+import "google/protobuf/struct.proto";
+
+service UserPreferenceService {
+  rpc GetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
+  rpc ListPreference(ListPreferenceRequest) returns (ListPreferenceResponse);
+  rpc CreatePreference(CreatePreferenceRequest) returns (CreatePreferenceResponse);
+  rpc UpdatePreference(UpdatePreferenceRequest) returns (UpdatePreferenceResponse);
+  rpc DeletePreference(DeletePreferenceRequest) returns (DeletePreferenceResponse);
+}
+
+message Preference {
+  common.Metadata        meta         = 1;
+  string                 user_id      = 2;
+  string                 language     = 3;
+  string                 currency     = 4;
+  bool                   email_opt_in = 5;
+  bool                   sms_opt_in   = 6;
+  google.protobuf.Struct settings     = 7;
+}
+
+message GetPreferenceRequest {
+  string uuid = 1;
+}
+
+message GetPreferenceResponse {
+  Preference preference = 1;
+}
+
+message ListPreferenceRequest {
+  common.Filter            filter     = 1;
+  common.PaginationRequest pagination = 2;
+}
+
+message ListPreferenceResponse {
+  repeated Preference       preference = 1;
+  common.PaginationResponse pagination = 2;
+}
+
+message CreatePreferenceResponse {
+  Preference preference = 1;
+}
+
+message CreatePreferenceRequest {
+  string     uuid       = 1;
+  Preference preference = 2;
+}
+
+message UpdatePreferenceRequest {
+  string     uuid       = 1;
+  Preference preference = 2;
+}
+
+message UpdatePreferenceResponse {
+  string     uuid       = 1;
+  Preference preference = 2;
+}
+
+message DeletePreferenceRequest {
+  string uuid = 1;
+}
+
+message DeletePreferenceResponse {
+  string message = 1;
+}

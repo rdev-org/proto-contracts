@@ -33,3 +33,9 @@ Generate User Address Proto
 ```bash
 protoc -I=./proto --go_out=./pb/user_address --go_opt=paths=source_relative --go-grpc_out=./pb/user_address --go-grpc_opt=paths=source_relative proto/user_address.proto
 ```
+
+Generate User Preference Proto
+
+```bash
+protoc -I=./proto --go_out=./pb/user_preference --go_opt=paths=source_relative --go-grpc_out=./pb/user_preference --go-grpc_opt=paths=source_relative proto/user_preference.proto
+```
