@@ -50,19 +50,23 @@ message ListAddressResponse {
 }
 
 message CreateAddressRequest {
-  Address address = 1;
+  string  uuid    = 1;
+  Address address = 2;
 }
 
 message CreateAddressResponse {
-  Address address = 1;
+  string  uuid    = 1;
+  Address address = 2;
 }
 
 message UpdateAddressRequest {
-  Address address = 1;
+  string  uuid    = 1;
+  Address address = 2;
 }
 
 message UpdateAddressResponse {
-  Address address = 1;
+  string  uuid    = 1;
+  Address address = 2;
 }
 
 message DeleteAddressRequest {
@@ -79,5 +83,6 @@ message DefaultAddressRequest {
 }
 
 message DefaultAddressResponse {
-  Address address = 1;
+  string  uuid    = 1;
+  Address address = 2;
 }

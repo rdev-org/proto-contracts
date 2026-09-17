@@ -340,7 +340,8 @@ func (x *ListAddressResponse) GetPagination() *common.PaginationResponse {
 
 type CreateAddressRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Address       *Address               `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Address       *Address               `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -375,6 +376,13 @@ func (*CreateAddressRequest) Descriptor() ([]byte, []int) {
 	return file_user_address_proto_rawDescGZIP(), []int{5}
 }
 
+func (x *CreateAddressRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
 func (x *CreateAddressRequest) GetAddress() *Address {
 	if x != nil {
 		return x.Address
@@ -384,7 +392,8 @@ func (x *CreateAddressRequest) GetAddress() *Address {
 
 type CreateAddressResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Address       *Address               `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Address       *Address               `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -419,6 +428,13 @@ func (*CreateAddressResponse) Descriptor() ([]byte, []int) {
 	return file_user_address_proto_rawDescGZIP(), []int{6}
 }
 
+func (x *CreateAddressResponse) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
 func (x *CreateAddressResponse) GetAddress() *Address {
 	if x != nil {
 		return x.Address
@@ -428,7 +444,8 @@ func (x *CreateAddressResponse) GetAddress() *Address {
 
 type UpdateAddressRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Address       *Address               `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Address       *Address               `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -463,6 +480,13 @@ func (*UpdateAddressRequest) Descriptor() ([]byte, []int) {
 	return file_user_address_proto_rawDescGZIP(), []int{7}
 }
 
+func (x *UpdateAddressRequest) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
+}
+
 func (x *UpdateAddressRequest) GetAddress() *Address {
 	if x != nil {
 		return x.Address
@@ -472,7 +496,8 @@ func (x *UpdateAddressRequest) GetAddress() *Address {
 
 type UpdateAddressResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Address       *Address               `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Address       *Address               `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -505,6 +530,13 @@ func (x *UpdateAddressResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateAddressResponse.ProtoReflect.Descriptor instead.
 func (*UpdateAddressResponse) Descriptor() ([]byte, []int) {
 	return file_user_address_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *UpdateAddressResponse) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
 }
 
 func (x *UpdateAddressResponse) GetAddress() *Address {
@@ -656,7 +688,8 @@ func (x *DefaultAddressRequest) GetUserId() string {
 
 type DefaultAddressResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Address       *Address               `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Address       *Address               `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -689,6 +722,13 @@ func (x *DefaultAddressResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DefaultAddressResponse.ProtoReflect.Descriptor instead.
 func (*DefaultAddressResponse) Descriptor() ([]byte, []int) {
 	return file_user_address_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DefaultAddressResponse) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
 }
 
 func (x *DefaultAddressResponse) GetAddress() *Address {
@@ -731,24 +771,29 @@ const file_user_address_proto_rawDesc = "" +
 	"\aaddress\x18\x01 \x03(\v2\x15.user_address.AddressR\aaddress\x12:\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x1a.common.PaginationResponseR\n" +
-	"pagination\"G\n" +
-	"\x14CreateAddressRequest\x12/\n" +
-	"\aaddress\x18\x01 \x01(\v2\x15.user_address.AddressR\aaddress\"H\n" +
-	"\x15CreateAddressResponse\x12/\n" +
-	"\aaddress\x18\x01 \x01(\v2\x15.user_address.AddressR\aaddress\"G\n" +
-	"\x14UpdateAddressRequest\x12/\n" +
-	"\aaddress\x18\x01 \x01(\v2\x15.user_address.AddressR\aaddress\"H\n" +
-	"\x15UpdateAddressResponse\x12/\n" +
-	"\aaddress\x18\x01 \x01(\v2\x15.user_address.AddressR\aaddress\"*\n" +
+	"pagination\"[\n" +
+	"\x14CreateAddressRequest\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
+	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\"\\\n" +
+	"\x15CreateAddressResponse\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
+	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\"[\n" +
+	"\x14UpdateAddressRequest\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
+	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\"\\\n" +
+	"\x15UpdateAddressResponse\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
+	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\"*\n" +
 	"\x14DeleteAddressRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\"1\n" +
 	"\x15DeleteAddressResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"D\n" +
 	"\x15DefaultAddressRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\"I\n" +
-	"\x16DefaultAddressResponse\x12/\n" +
-	"\aaddress\x18\x01 \x01(\v2\x15.user_address.AddressR\aaddress2\xa4\x04\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\"]\n" +
+	"\x16DefaultAddressResponse\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
+	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress2\xa4\x04\n" +
 	"\x12UserAddressService\x12O\n" +
 	"\n" +
 	"GetAddress\x12\x1f.user_address.GetAddressRequest\x1a .user_address.GetAddressResponse\x12R\n" +
