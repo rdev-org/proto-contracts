@@ -18,17 +18,19 @@ service UserPreferenceService {
 }
 
 message Preference {
-  common.Metadata        meta         = 1;
-  string                 user_id      = 2;
-  string                 language     = 3;
-  string                 currency     = 4;
-  bool                   email_opt_in = 5;
-  bool                   sms_opt_in   = 6;
-  google.protobuf.Struct settings     = 7;
+  common.Metadata        meta            = 1;
+  common.RequestContext  request_context = 2;
+  string                 user_id         = 3;
+  string                 language        = 4;
+  string                 currency        = 5;
+  bool                   email_opt_in    = 6;
+  bool                   sms_opt_in      = 7;
+  google.protobuf.Struct settings        = 8;
 }
 
 message GetPreferenceRequest {
-  string uuid = 1;
+  string                uuid            = 1;
+  common.RequestContext request_context = 2;
 }
 
 message GetPreferenceResponse {
@@ -36,8 +38,9 @@ message GetPreferenceResponse {
 }
 
 message ListPreferenceRequest {
-  common.Filter            filter     = 1;
-  common.PaginationRequest pagination = 2;
+  common.Filter            filter          = 1;
+  common.PaginationRequest pagination      = 2;
+  common.RequestContext    request_context = 3;
 }
 
 message ListPreferenceResponse {
@@ -45,18 +48,20 @@ message ListPreferenceResponse {
   common.PaginationResponse pagination = 2;
 }
 
+message CreatePreferenceRequest {
+  string                uuid            = 1;
+  Preference            preference      = 2;
+  common.RequestContext request_context = 3;
+}
+
 message CreatePreferenceResponse {
   Preference preference = 1;
 }
 
-message CreatePreferenceRequest {
-  string     uuid       = 1;
-  Preference preference = 2;
-}
-
 message UpdatePreferenceRequest {
-  string     uuid       = 1;
-  Preference preference = 2;
+  string                uuid            = 1;
+  Preference            preference      = 2;
+  common.RequestContext request_context = 3;
 }
 
 message UpdatePreferenceResponse {
@@ -65,7 +70,8 @@ message UpdatePreferenceResponse {
 }
 
 message DeletePreferenceRequest {
-  string uuid = 1;
+  string                uuid            = 1;
+  common.RequestContext request_context = 2;
 }
 
 message DeletePreferenceResponse {

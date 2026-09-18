@@ -24,16 +24,17 @@ const (
 )
 
 type Preference struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Meta          *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Language      string                 `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
-	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
-	EmailOptIn    bool                   `protobuf:"varint,5,opt,name=email_opt_in,json=emailOptIn,proto3" json:"email_opt_in,omitempty"`
-	SmsOptIn      bool                   `protobuf:"varint,6,opt,name=sms_opt_in,json=smsOptIn,proto3" json:"sms_opt_in,omitempty"`
-	Settings      *structpb.Struct       `protobuf:"bytes,7,opt,name=settings,proto3" json:"settings,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Meta           *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	UserId         string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Language       string                 `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
+	Currency       string                 `protobuf:"bytes,5,opt,name=currency,proto3" json:"currency,omitempty"`
+	EmailOptIn     bool                   `protobuf:"varint,6,opt,name=email_opt_in,json=emailOptIn,proto3" json:"email_opt_in,omitempty"`
+	SmsOptIn       bool                   `protobuf:"varint,7,opt,name=sms_opt_in,json=smsOptIn,proto3" json:"sms_opt_in,omitempty"`
+	Settings       *structpb.Struct       `protobuf:"bytes,8,opt,name=settings,proto3" json:"settings,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *Preference) Reset() {
@@ -69,6 +70,13 @@ func (*Preference) Descriptor() ([]byte, []int) {
 func (x *Preference) GetMeta() *common.Metadata {
 	if x != nil {
 		return x.Meta
+	}
+	return nil
+}
+
+func (x *Preference) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
 	}
 	return nil
 }
@@ -116,10 +124,11 @@ func (x *Preference) GetSettings() *structpb.Struct {
 }
 
 type GetPreferenceRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Uuid           string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *GetPreferenceRequest) Reset() {
@@ -157,6 +166,13 @@ func (x *GetPreferenceRequest) GetUuid() string {
 		return x.Uuid
 	}
 	return ""
+}
+
+func (x *GetPreferenceRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
 }
 
 type GetPreferenceResponse struct {
@@ -204,11 +220,12 @@ func (x *GetPreferenceResponse) GetPreference() *Preference {
 }
 
 type ListPreferenceRequest struct {
-	state         protoimpl.MessageState    `protogen:"open.v1"`
-	Filter        *common.Filter            `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
-	Pagination    *common.PaginationRequest `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState    `protogen:"open.v1"`
+	Filter         *common.Filter            `protobuf:"bytes,1,opt,name=filter,proto3" json:"filter,omitempty"`
+	Pagination     *common.PaginationRequest `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+	RequestContext *common.RequestContext    `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ListPreferenceRequest) Reset() {
@@ -251,6 +268,13 @@ func (x *ListPreferenceRequest) GetFilter() *common.Filter {
 func (x *ListPreferenceRequest) GetPagination() *common.PaginationRequest {
 	if x != nil {
 		return x.Pagination
+	}
+	return nil
+}
+
+func (x *ListPreferenceRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
 	}
 	return nil
 }
@@ -307,61 +331,18 @@ func (x *ListPreferenceResponse) GetPagination() *common.PaginationResponse {
 	return nil
 }
 
-type CreatePreferenceResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Preference    *Preference            `protobuf:"bytes,1,opt,name=preference,proto3" json:"preference,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreatePreferenceResponse) Reset() {
-	*x = CreatePreferenceResponse{}
-	mi := &file_user_preference_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreatePreferenceResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreatePreferenceResponse) ProtoMessage() {}
-
-func (x *CreatePreferenceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_user_preference_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreatePreferenceResponse.ProtoReflect.Descriptor instead.
-func (*CreatePreferenceResponse) Descriptor() ([]byte, []int) {
-	return file_user_preference_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *CreatePreferenceResponse) GetPreference() *Preference {
-	if x != nil {
-		return x.Preference
-	}
-	return nil
-}
-
 type CreatePreferenceRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Preference    *Preference            `protobuf:"bytes,2,opt,name=preference,proto3" json:"preference,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Uuid           string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Preference     *Preference            `protobuf:"bytes,2,opt,name=preference,proto3" json:"preference,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *CreatePreferenceRequest) Reset() {
 	*x = CreatePreferenceRequest{}
-	mi := &file_user_preference_proto_msgTypes[6]
+	mi := &file_user_preference_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -373,7 +354,7 @@ func (x *CreatePreferenceRequest) String() string {
 func (*CreatePreferenceRequest) ProtoMessage() {}
 
 func (x *CreatePreferenceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_user_preference_proto_msgTypes[6]
+	mi := &file_user_preference_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -386,7 +367,7 @@ func (x *CreatePreferenceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePreferenceRequest.ProtoReflect.Descriptor instead.
 func (*CreatePreferenceRequest) Descriptor() ([]byte, []int) {
-	return file_user_preference_proto_rawDescGZIP(), []int{6}
+	return file_user_preference_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *CreatePreferenceRequest) GetUuid() string {
@@ -403,12 +384,64 @@ func (x *CreatePreferenceRequest) GetPreference() *Preference {
 	return nil
 }
 
-type UpdatePreferenceRequest struct {
+func (x *CreatePreferenceRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
+}
+
+type CreatePreferenceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Preference    *Preference            `protobuf:"bytes,2,opt,name=preference,proto3" json:"preference,omitempty"`
+	Preference    *Preference            `protobuf:"bytes,1,opt,name=preference,proto3" json:"preference,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreatePreferenceResponse) Reset() {
+	*x = CreatePreferenceResponse{}
+	mi := &file_user_preference_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreatePreferenceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreatePreferenceResponse) ProtoMessage() {}
+
+func (x *CreatePreferenceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_preference_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreatePreferenceResponse.ProtoReflect.Descriptor instead.
+func (*CreatePreferenceResponse) Descriptor() ([]byte, []int) {
+	return file_user_preference_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CreatePreferenceResponse) GetPreference() *Preference {
+	if x != nil {
+		return x.Preference
+	}
+	return nil
+}
+
+type UpdatePreferenceRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Uuid           string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Preference     *Preference            `protobuf:"bytes,2,opt,name=preference,proto3" json:"preference,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *UpdatePreferenceRequest) Reset() {
@@ -451,6 +484,13 @@ func (x *UpdatePreferenceRequest) GetUuid() string {
 func (x *UpdatePreferenceRequest) GetPreference() *Preference {
 	if x != nil {
 		return x.Preference
+	}
+	return nil
+}
+
+func (x *UpdatePreferenceRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
 	}
 	return nil
 }
@@ -508,10 +548,11 @@ func (x *UpdatePreferenceResponse) GetPreference() *Preference {
 }
 
 type DeletePreferenceRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Uuid           string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *DeletePreferenceRequest) Reset() {
@@ -549,6 +590,13 @@ func (x *DeletePreferenceRequest) GetUuid() string {
 		return x.Uuid
 	}
 	return ""
+}
+
+func (x *DeletePreferenceRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
 }
 
 type DeletePreferenceResponse struct {
@@ -599,57 +647,63 @@ var File_user_preference_proto protoreflect.FileDescriptor
 
 const file_user_preference_proto_rawDesc = "" +
 	"\n" +
-	"\x15user_preference.proto\x12\x0fuser_preference\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xf8\x01\n" +
+	"\x15user_preference.proto\x12\x0fuser_preference\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xb9\x02\n" +
 	"\n" +
 	"Preference\x12$\n" +
-	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
-	"\blanguage\x18\x03 \x01(\tR\blanguage\x12\x1a\n" +
-	"\bcurrency\x18\x04 \x01(\tR\bcurrency\x12 \n" +
-	"\femail_opt_in\x18\x05 \x01(\bR\n" +
+	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\x12\x17\n" +
+	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x1a\n" +
+	"\blanguage\x18\x04 \x01(\tR\blanguage\x12\x1a\n" +
+	"\bcurrency\x18\x05 \x01(\tR\bcurrency\x12 \n" +
+	"\femail_opt_in\x18\x06 \x01(\bR\n" +
 	"emailOptIn\x12\x1c\n" +
 	"\n" +
-	"sms_opt_in\x18\x06 \x01(\bR\bsmsOptIn\x123\n" +
-	"\bsettings\x18\a \x01(\v2\x17.google.protobuf.StructR\bsettings\"*\n" +
+	"sms_opt_in\x18\a \x01(\bR\bsmsOptIn\x123\n" +
+	"\bsettings\x18\b \x01(\v2\x17.google.protobuf.StructR\bsettings\"k\n" +
 	"\x14GetPreferenceRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\"T\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"T\n" +
 	"\x15GetPreferenceResponse\x12;\n" +
 	"\n" +
 	"preference\x18\x01 \x01(\v2\x1b.user_preference.PreferenceR\n" +
-	"preference\"z\n" +
+	"preference\"\xbb\x01\n" +
 	"\x15ListPreferenceRequest\x12&\n" +
 	"\x06filter\x18\x01 \x01(\v2\x0e.common.FilterR\x06filter\x129\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x19.common.PaginationRequestR\n" +
-	"pagination\"\x91\x01\n" +
+	"pagination\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x91\x01\n" +
 	"\x16ListPreferenceResponse\x12;\n" +
 	"\n" +
 	"preference\x18\x01 \x03(\v2\x1b.user_preference.PreferenceR\n" +
 	"preference\x12:\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x1a.common.PaginationResponseR\n" +
-	"pagination\"W\n" +
-	"\x18CreatePreferenceResponse\x12;\n" +
-	"\n" +
-	"preference\x18\x01 \x01(\v2\x1b.user_preference.PreferenceR\n" +
-	"preference\"j\n" +
+	"pagination\"\xab\x01\n" +
 	"\x17CreatePreferenceRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12;\n" +
 	"\n" +
 	"preference\x18\x02 \x01(\v2\x1b.user_preference.PreferenceR\n" +
-	"preference\"j\n" +
+	"preference\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"W\n" +
+	"\x18CreatePreferenceResponse\x12;\n" +
+	"\n" +
+	"preference\x18\x01 \x01(\v2\x1b.user_preference.PreferenceR\n" +
+	"preference\"\xab\x01\n" +
 	"\x17UpdatePreferenceRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12;\n" +
 	"\n" +
 	"preference\x18\x02 \x01(\v2\x1b.user_preference.PreferenceR\n" +
-	"preference\"k\n" +
+	"preference\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"k\n" +
 	"\x18UpdatePreferenceResponse\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12;\n" +
 	"\n" +
 	"preference\x18\x02 \x01(\v2\x1b.user_preference.PreferenceR\n" +
-	"preference\"-\n" +
+	"preference\"n\n" +
 	"\x17DeletePreferenceRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\"4\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"4\n" +
 	"\x18DeletePreferenceResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage2\x95\x04\n" +
 	"\x15UserPreferenceService\x12^\n" +
@@ -678,45 +732,52 @@ var file_user_preference_proto_goTypes = []any{
 	(*GetPreferenceResponse)(nil),     // 2: user_preference.GetPreferenceResponse
 	(*ListPreferenceRequest)(nil),     // 3: user_preference.ListPreferenceRequest
 	(*ListPreferenceResponse)(nil),    // 4: user_preference.ListPreferenceResponse
-	(*CreatePreferenceResponse)(nil),  // 5: user_preference.CreatePreferenceResponse
-	(*CreatePreferenceRequest)(nil),   // 6: user_preference.CreatePreferenceRequest
+	(*CreatePreferenceRequest)(nil),   // 5: user_preference.CreatePreferenceRequest
+	(*CreatePreferenceResponse)(nil),  // 6: user_preference.CreatePreferenceResponse
 	(*UpdatePreferenceRequest)(nil),   // 7: user_preference.UpdatePreferenceRequest
 	(*UpdatePreferenceResponse)(nil),  // 8: user_preference.UpdatePreferenceResponse
 	(*DeletePreferenceRequest)(nil),   // 9: user_preference.DeletePreferenceRequest
 	(*DeletePreferenceResponse)(nil),  // 10: user_preference.DeletePreferenceResponse
 	(*common.Metadata)(nil),           // 11: common.Metadata
-	(*structpb.Struct)(nil),           // 12: google.protobuf.Struct
-	(*common.Filter)(nil),             // 13: common.Filter
-	(*common.PaginationRequest)(nil),  // 14: common.PaginationRequest
-	(*common.PaginationResponse)(nil), // 15: common.PaginationResponse
+	(*common.RequestContext)(nil),     // 12: common.RequestContext
+	(*structpb.Struct)(nil),           // 13: google.protobuf.Struct
+	(*common.Filter)(nil),             // 14: common.Filter
+	(*common.PaginationRequest)(nil),  // 15: common.PaginationRequest
+	(*common.PaginationResponse)(nil), // 16: common.PaginationResponse
 }
 var file_user_preference_proto_depIdxs = []int32{
 	11, // 0: user_preference.Preference.meta:type_name -> common.Metadata
-	12, // 1: user_preference.Preference.settings:type_name -> google.protobuf.Struct
-	0,  // 2: user_preference.GetPreferenceResponse.preference:type_name -> user_preference.Preference
-	13, // 3: user_preference.ListPreferenceRequest.filter:type_name -> common.Filter
-	14, // 4: user_preference.ListPreferenceRequest.pagination:type_name -> common.PaginationRequest
-	0,  // 5: user_preference.ListPreferenceResponse.preference:type_name -> user_preference.Preference
-	15, // 6: user_preference.ListPreferenceResponse.pagination:type_name -> common.PaginationResponse
-	0,  // 7: user_preference.CreatePreferenceResponse.preference:type_name -> user_preference.Preference
-	0,  // 8: user_preference.CreatePreferenceRequest.preference:type_name -> user_preference.Preference
-	0,  // 9: user_preference.UpdatePreferenceRequest.preference:type_name -> user_preference.Preference
-	0,  // 10: user_preference.UpdatePreferenceResponse.preference:type_name -> user_preference.Preference
-	1,  // 11: user_preference.UserPreferenceService.GetPreference:input_type -> user_preference.GetPreferenceRequest
-	3,  // 12: user_preference.UserPreferenceService.ListPreference:input_type -> user_preference.ListPreferenceRequest
-	6,  // 13: user_preference.UserPreferenceService.CreatePreference:input_type -> user_preference.CreatePreferenceRequest
-	7,  // 14: user_preference.UserPreferenceService.UpdatePreference:input_type -> user_preference.UpdatePreferenceRequest
-	9,  // 15: user_preference.UserPreferenceService.DeletePreference:input_type -> user_preference.DeletePreferenceRequest
-	2,  // 16: user_preference.UserPreferenceService.GetPreference:output_type -> user_preference.GetPreferenceResponse
-	4,  // 17: user_preference.UserPreferenceService.ListPreference:output_type -> user_preference.ListPreferenceResponse
-	5,  // 18: user_preference.UserPreferenceService.CreatePreference:output_type -> user_preference.CreatePreferenceResponse
-	8,  // 19: user_preference.UserPreferenceService.UpdatePreference:output_type -> user_preference.UpdatePreferenceResponse
-	10, // 20: user_preference.UserPreferenceService.DeletePreference:output_type -> user_preference.DeletePreferenceResponse
-	16, // [16:21] is the sub-list for method output_type
-	11, // [11:16] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	12, // 1: user_preference.Preference.request_context:type_name -> common.RequestContext
+	13, // 2: user_preference.Preference.settings:type_name -> google.protobuf.Struct
+	12, // 3: user_preference.GetPreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 4: user_preference.GetPreferenceResponse.preference:type_name -> user_preference.Preference
+	14, // 5: user_preference.ListPreferenceRequest.filter:type_name -> common.Filter
+	15, // 6: user_preference.ListPreferenceRequest.pagination:type_name -> common.PaginationRequest
+	12, // 7: user_preference.ListPreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 8: user_preference.ListPreferenceResponse.preference:type_name -> user_preference.Preference
+	16, // 9: user_preference.ListPreferenceResponse.pagination:type_name -> common.PaginationResponse
+	0,  // 10: user_preference.CreatePreferenceRequest.preference:type_name -> user_preference.Preference
+	12, // 11: user_preference.CreatePreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 12: user_preference.CreatePreferenceResponse.preference:type_name -> user_preference.Preference
+	0,  // 13: user_preference.UpdatePreferenceRequest.preference:type_name -> user_preference.Preference
+	12, // 14: user_preference.UpdatePreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 15: user_preference.UpdatePreferenceResponse.preference:type_name -> user_preference.Preference
+	12, // 16: user_preference.DeletePreferenceRequest.request_context:type_name -> common.RequestContext
+	1,  // 17: user_preference.UserPreferenceService.GetPreference:input_type -> user_preference.GetPreferenceRequest
+	3,  // 18: user_preference.UserPreferenceService.ListPreference:input_type -> user_preference.ListPreferenceRequest
+	5,  // 19: user_preference.UserPreferenceService.CreatePreference:input_type -> user_preference.CreatePreferenceRequest
+	7,  // 20: user_preference.UserPreferenceService.UpdatePreference:input_type -> user_preference.UpdatePreferenceRequest
+	9,  // 21: user_preference.UserPreferenceService.DeletePreference:input_type -> user_preference.DeletePreferenceRequest
+	2,  // 22: user_preference.UserPreferenceService.GetPreference:output_type -> user_preference.GetPreferenceResponse
+	4,  // 23: user_preference.UserPreferenceService.ListPreference:output_type -> user_preference.ListPreferenceResponse
+	6,  // 24: user_preference.UserPreferenceService.CreatePreference:output_type -> user_preference.CreatePreferenceResponse
+	8,  // 25: user_preference.UserPreferenceService.UpdatePreference:output_type -> user_preference.UpdatePreferenceResponse
+	10, // 26: user_preference.UserPreferenceService.DeletePreference:output_type -> user_preference.DeletePreferenceResponse
+	22, // [22:27] is the sub-list for method output_type
+	17, // [17:22] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_user_preference_proto_init() }

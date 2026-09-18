@@ -13,3 +13,10 @@ message Metadata {
   google.protobuf.Timestamp updated_at = 4;
   google.protobuf.Timestamp deleted_at = 5;
 }
+
+message RequestContext {
+  string              ip_address = 1;
+  string              user_agent = 2;
+  string              device     = 3;
+  map<string, string> headers    = 4;
+}

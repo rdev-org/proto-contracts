@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	NotificationEmailService_SendEmail_FullMethodName          = "/notification_email.NotificationEmailService/SendEmail"
 	NotificationEmailService_RegisterEmail_FullMethodName      = "/notification_email.NotificationEmailService/RegisterEmail"
 	NotificationEmailService_ResetPasswordEmail_FullMethodName = "/notification_email.NotificationEmailService/ResetPasswordEmail"
 )
@@ -27,6 +28,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type NotificationEmailServiceClient interface {
+	SendEmail(ctx context.Context, in *SendEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error)
 	RegisterEmail(ctx context.Context, in *RegisterEmailRequest, opts ...grpc.CallOption) (*RegisterEmailResponse, error)
 	ResetPasswordEmail(ctx context.Context, in *ResetPasswordEmailRequest, opts ...grpc.CallOption) (*ResetPasswordEmailResponse, error)
 }
@@ -37,6 +39,16 @@ type notificationEmailServiceClient struct {
 
 func NewNotificationEmailServiceClient(cc grpc.ClientConnInterface) NotificationEmailServiceClient {
 	return &notificationEmailServiceClient{cc}
+}
+
+func (c *notificationEmailServiceClient) SendEmail(ctx context.Context, in *SendEmailRequest, opts ...grpc.CallOption) (*SendEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SendEmailResponse)
+	err := c.cc.Invoke(ctx, NotificationEmailService_SendEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *notificationEmailServiceClient) RegisterEmail(ctx context.Context, in *RegisterEmailRequest, opts ...grpc.CallOption) (*RegisterEmailResponse, error) {
@@ -63,6 +75,7 @@ func (c *notificationEmailServiceClient) ResetPasswordEmail(ctx context.Context,
 // All implementations must embed UnimplementedNotificationEmailServiceServer
 // for forward compatibility.
 type NotificationEmailServiceServer interface {
+	SendEmail(context.Context, *SendEmailRequest) (*SendEmailResponse, error)
 	RegisterEmail(context.Context, *RegisterEmailRequest) (*RegisterEmailResponse, error)
 	ResetPasswordEmail(context.Context, *ResetPasswordEmailRequest) (*ResetPasswordEmailResponse, error)
 	mustEmbedUnimplementedNotificationEmailServiceServer()
@@ -75,6 +88,9 @@ type NotificationEmailServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedNotificationEmailServiceServer struct{}
 
+func (UnimplementedNotificationEmailServiceServer) SendEmail(context.Context, *SendEmailRequest) (*SendEmailResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendEmail not implemented")
+}
 func (UnimplementedNotificationEmailServiceServer) RegisterEmail(context.Context, *RegisterEmailRequest) (*RegisterEmailResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RegisterEmail not implemented")
 }
@@ -101,6 +117,24 @@ func RegisterNotificationEmailServiceServer(s grpc.ServiceRegistrar, srv Notific
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&NotificationEmailService_ServiceDesc, srv)
+}
+
+func _NotificationEmailService_SendEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotificationEmailServiceServer).SendEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NotificationEmailService_SendEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotificationEmailServiceServer).SendEmail(ctx, req.(*SendEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _NotificationEmailService_RegisterEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -146,6 +180,10 @@ var NotificationEmailService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "notification_email.NotificationEmailService",
 	HandlerType: (*NotificationEmailServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SendEmail",
+			Handler:    _NotificationEmailService_SendEmail_Handler,
+		},
 		{
 			MethodName: "RegisterEmail",
 			Handler:    _NotificationEmailService_RegisterEmail_Handler,

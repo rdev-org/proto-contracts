@@ -7,6 +7,7 @@
 package user_credential
 
 import (
+	common "github.com/rdev-org/proto-contracts/pb/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -23,11 +24,12 @@ const (
 )
 
 type LoginRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Username       string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
+	Password       string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *LoginRequest) Reset() {
@@ -72,6 +74,13 @@ func (x *LoginRequest) GetPassword() string {
 		return x.Password
 	}
 	return ""
+}
+
+func (x *LoginRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
 }
 
 type LoginResponse struct {
@@ -143,11 +152,12 @@ func (x *LoginResponse) GetUuid() string {
 }
 
 type RegisterRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Email          string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Password       string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *RegisterRequest) Reset() {
@@ -192,6 +202,13 @@ func (x *RegisterRequest) GetPassword() string {
 		return x.Password
 	}
 	return ""
+}
+
+func (x *RegisterRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
 }
 
 type RegisterResponse struct {
@@ -239,10 +256,11 @@ func (x *RegisterResponse) GetMessage() string {
 }
 
 type DeleteCredentialRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Uuid           string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *DeleteCredentialRequest) Reset() {
@@ -280,6 +298,13 @@ func (x *DeleteCredentialRequest) GetUuid() string {
 		return x.Uuid
 	}
 	return ""
+}
+
+func (x *DeleteCredentialRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
 }
 
 type DeleteCredentialResponse struct {
@@ -327,11 +352,12 @@ func (x *DeleteCredentialResponse) GetMessage() string {
 }
 
 type UpdatePasswordRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Uuid           string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Password       string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *UpdatePasswordRequest) Reset() {
@@ -376,6 +402,13 @@ func (x *UpdatePasswordRequest) GetPassword() string {
 		return x.Password
 	}
 	return ""
+}
+
+func (x *UpdatePasswordRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
 }
 
 type UpdatePasswordResponse struct {
@@ -423,13 +456,14 @@ func (x *UpdatePasswordResponse) GetMessage() string {
 }
 
 type ResetPasswordRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	Uuid          string                 `protobuf:"bytes,3,opt,name=uuid,proto3" json:"uuid,omitempty"`
-	Token         string                 `protobuf:"bytes,4,opt,name=token,proto3" json:"token,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Email          string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Password       string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Uuid           string                 `protobuf:"bytes,3,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Token          string                 `protobuf:"bytes,4,opt,name=token,proto3" json:"token,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,5,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ResetPasswordRequest) Reset() {
@@ -490,6 +524,13 @@ func (x *ResetPasswordRequest) GetToken() string {
 	return ""
 }
 
+func (x *ResetPasswordRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
+}
+
 type ResetPasswordResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
@@ -535,10 +576,11 @@ func (x *ResetPasswordResponse) GetMessage() string {
 }
 
 type ForgetPasswordRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Email          string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ForgetPasswordRequest) Reset() {
@@ -576,6 +618,13 @@ func (x *ForgetPasswordRequest) GetEmail() string {
 		return x.Email
 	}
 	return ""
+}
+
+func (x *ForgetPasswordRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
 }
 
 type ForgetPasswordResponse struct {
@@ -634,38 +683,44 @@ var File_user_credential_proto protoreflect.FileDescriptor
 
 const file_user_credential_proto_rawDesc = "" +
 	"\n" +
-	"\x15user_credential.proto\x12\x0fuser_credential\x1a\x1fgoogle/protobuf/timestamp.proto\"F\n" +
+	"\x15user_credential.proto\x12\x0fuser_credential\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x87\x01\n" +
 	"\fLoginRequest\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"k\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"k\n" +
 	"\rLoginResponse\x12\x1a\n" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x14\n" +
 	"\x05token\x18\x03 \x01(\tR\x05token\x12\x12\n" +
-	"\x04uuid\x18\x04 \x01(\tR\x04uuid\"C\n" +
+	"\x04uuid\x18\x04 \x01(\tR\x04uuid\"\x84\x01\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\",\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\",\n" +
 	"\x10RegisterResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"-\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"n\n" +
 	"\x17DeleteCredentialRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\"4\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"4\n" +
 	"\x18DeleteCredentialResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"G\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"\x88\x01\n" +
 	"\x15UpdatePasswordRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"2\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"2\n" +
 	"\x16UpdatePasswordResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"r\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"\xb3\x01\n" +
 	"\x14ResetPasswordRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
 	"\x04uuid\x18\x03 \x01(\tR\x04uuid\x12\x14\n" +
-	"\x05token\x18\x04 \x01(\tR\x05token\"1\n" +
+	"\x05token\x18\x04 \x01(\tR\x05token\x12?\n" +
+	"\x0frequest_context\x18\x05 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"1\n" +
 	"\x15ResetPasswordResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage\"-\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\"n\n" +
 	"\x15ForgetPasswordRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"g\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"g\n" +
 	"\x16ForgetPasswordResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
 	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt2\xbf\x04\n" +
@@ -703,27 +758,34 @@ var file_user_credential_proto_goTypes = []any{
 	(*ResetPasswordResponse)(nil),    // 9: user_credential.ResetPasswordResponse
 	(*ForgetPasswordRequest)(nil),    // 10: user_credential.ForgetPasswordRequest
 	(*ForgetPasswordResponse)(nil),   // 11: user_credential.ForgetPasswordResponse
-	(*timestamppb.Timestamp)(nil),    // 12: google.protobuf.Timestamp
+	(*common.RequestContext)(nil),    // 12: common.RequestContext
+	(*timestamppb.Timestamp)(nil),    // 13: google.protobuf.Timestamp
 }
 var file_user_credential_proto_depIdxs = []int32{
-	12, // 0: user_credential.ForgetPasswordResponse.sent_at:type_name -> google.protobuf.Timestamp
-	0,  // 1: user_credential.UserCredentialService.Login:input_type -> user_credential.LoginRequest
-	2,  // 2: user_credential.UserCredentialService.Register:input_type -> user_credential.RegisterRequest
-	4,  // 3: user_credential.UserCredentialService.DeleteCredential:input_type -> user_credential.DeleteCredentialRequest
-	6,  // 4: user_credential.UserCredentialService.UpdatePassword:input_type -> user_credential.UpdatePasswordRequest
-	8,  // 5: user_credential.UserCredentialService.ResetPassword:input_type -> user_credential.ResetPasswordRequest
-	10, // 6: user_credential.UserCredentialService.ForgetPassword:input_type -> user_credential.ForgetPasswordRequest
-	1,  // 7: user_credential.UserCredentialService.Login:output_type -> user_credential.LoginResponse
-	3,  // 8: user_credential.UserCredentialService.Register:output_type -> user_credential.RegisterResponse
-	5,  // 9: user_credential.UserCredentialService.DeleteCredential:output_type -> user_credential.DeleteCredentialResponse
-	7,  // 10: user_credential.UserCredentialService.UpdatePassword:output_type -> user_credential.UpdatePasswordResponse
-	9,  // 11: user_credential.UserCredentialService.ResetPassword:output_type -> user_credential.ResetPasswordResponse
-	11, // 12: user_credential.UserCredentialService.ForgetPassword:output_type -> user_credential.ForgetPasswordResponse
-	7,  // [7:13] is the sub-list for method output_type
-	1,  // [1:7] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	12, // 0: user_credential.LoginRequest.request_context:type_name -> common.RequestContext
+	12, // 1: user_credential.RegisterRequest.request_context:type_name -> common.RequestContext
+	12, // 2: user_credential.DeleteCredentialRequest.request_context:type_name -> common.RequestContext
+	12, // 3: user_credential.UpdatePasswordRequest.request_context:type_name -> common.RequestContext
+	12, // 4: user_credential.ResetPasswordRequest.request_context:type_name -> common.RequestContext
+	12, // 5: user_credential.ForgetPasswordRequest.request_context:type_name -> common.RequestContext
+	13, // 6: user_credential.ForgetPasswordResponse.sent_at:type_name -> google.protobuf.Timestamp
+	0,  // 7: user_credential.UserCredentialService.Login:input_type -> user_credential.LoginRequest
+	2,  // 8: user_credential.UserCredentialService.Register:input_type -> user_credential.RegisterRequest
+	4,  // 9: user_credential.UserCredentialService.DeleteCredential:input_type -> user_credential.DeleteCredentialRequest
+	6,  // 10: user_credential.UserCredentialService.UpdatePassword:input_type -> user_credential.UpdatePasswordRequest
+	8,  // 11: user_credential.UserCredentialService.ResetPassword:input_type -> user_credential.ResetPasswordRequest
+	10, // 12: user_credential.UserCredentialService.ForgetPassword:input_type -> user_credential.ForgetPasswordRequest
+	1,  // 13: user_credential.UserCredentialService.Login:output_type -> user_credential.LoginResponse
+	3,  // 14: user_credential.UserCredentialService.Register:output_type -> user_credential.RegisterResponse
+	5,  // 15: user_credential.UserCredentialService.DeleteCredential:output_type -> user_credential.DeleteCredentialResponse
+	7,  // 16: user_credential.UserCredentialService.UpdatePassword:output_type -> user_credential.UpdatePasswordResponse
+	9,  // 17: user_credential.UserCredentialService.ResetPassword:output_type -> user_credential.ResetPasswordResponse
+	11, // 18: user_credential.UserCredentialService.ForgetPassword:output_type -> user_credential.ForgetPasswordResponse
+	13, // [13:19] is the sub-list for method output_type
+	7,  // [7:13] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_user_credential_proto_init() }

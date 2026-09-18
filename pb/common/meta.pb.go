@@ -98,6 +98,74 @@ func (x *Metadata) GetDeletedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+type RequestContext struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IpAddress     string                 `protobuf:"bytes,1,opt,name=ip_address,json=ipAddress,proto3" json:"ip_address,omitempty"`
+	UserAgent     string                 `protobuf:"bytes,2,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
+	Device        string                 `protobuf:"bytes,3,opt,name=device,proto3" json:"device,omitempty"`
+	Headers       map[string]string      `protobuf:"bytes,4,rep,name=headers,proto3" json:"headers,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RequestContext) Reset() {
+	*x = RequestContext{}
+	mi := &file_common_meta_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RequestContext) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RequestContext) ProtoMessage() {}
+
+func (x *RequestContext) ProtoReflect() protoreflect.Message {
+	mi := &file_common_meta_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RequestContext.ProtoReflect.Descriptor instead.
+func (*RequestContext) Descriptor() ([]byte, []int) {
+	return file_common_meta_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *RequestContext) GetIpAddress() string {
+	if x != nil {
+		return x.IpAddress
+	}
+	return ""
+}
+
+func (x *RequestContext) GetUserAgent() string {
+	if x != nil {
+		return x.UserAgent
+	}
+	return ""
+}
+
+func (x *RequestContext) GetDevice() string {
+	if x != nil {
+		return x.Device
+	}
+	return ""
+}
+
+func (x *RequestContext) GetHeaders() map[string]string {
+	if x != nil {
+		return x.Headers
+	}
+	return nil
+}
+
 var File_common_meta_proto protoreflect.FileDescriptor
 
 const file_common_meta_proto_rawDesc = "" +
@@ -111,7 +179,17 @@ const file_common_meta_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAtB/Z-github.com/rdev-org/proto-contracts/pb/commonb\x06proto3"
+	"deleted_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tdeletedAt\"\xe1\x01\n" +
+	"\x0eRequestContext\x12\x1d\n" +
+	"\n" +
+	"ip_address\x18\x01 \x01(\tR\tipAddress\x12\x1d\n" +
+	"\n" +
+	"user_agent\x18\x02 \x01(\tR\tuserAgent\x12\x16\n" +
+	"\x06device\x18\x03 \x01(\tR\x06device\x12=\n" +
+	"\aheaders\x18\x04 \x03(\v2#.common.RequestContext.HeadersEntryR\aheaders\x1a:\n" +
+	"\fHeadersEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B/Z-github.com/rdev-org/proto-contracts/pb/commonb\x06proto3"
 
 var (
 	file_common_meta_proto_rawDescOnce sync.Once
@@ -125,20 +203,23 @@ func file_common_meta_proto_rawDescGZIP() []byte {
 	return file_common_meta_proto_rawDescData
 }
 
-var file_common_meta_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_common_meta_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_common_meta_proto_goTypes = []any{
 	(*Metadata)(nil),              // 0: common.Metadata
-	(*timestamppb.Timestamp)(nil), // 1: google.protobuf.Timestamp
+	(*RequestContext)(nil),        // 1: common.RequestContext
+	nil,                           // 2: common.RequestContext.HeadersEntry
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
 var file_common_meta_proto_depIdxs = []int32{
-	1, // 0: common.Metadata.created_at:type_name -> google.protobuf.Timestamp
-	1, // 1: common.Metadata.updated_at:type_name -> google.protobuf.Timestamp
-	1, // 2: common.Metadata.deleted_at:type_name -> google.protobuf.Timestamp
-	3, // [3:3] is the sub-list for method output_type
-	3, // [3:3] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	3, // 0: common.Metadata.created_at:type_name -> google.protobuf.Timestamp
+	3, // 1: common.Metadata.updated_at:type_name -> google.protobuf.Timestamp
+	3, // 2: common.Metadata.deleted_at:type_name -> google.protobuf.Timestamp
+	2, // 3: common.RequestContext.headers:type_name -> common.RequestContext.HeadersEntry
+	4, // [4:4] is the sub-list for method output_type
+	4, // [4:4] is the sub-list for method input_type
+	4, // [4:4] is the sub-list for extension type_name
+	4, // [4:4] is the sub-list for extension extendee
+	0, // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_common_meta_proto_init() }
@@ -152,7 +233,7 @@ func file_common_meta_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_common_meta_proto_rawDesc), len(file_common_meta_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -7,6 +7,7 @@
 package notification_email
 
 import (
+	common "github.com/rdev-org/proto-contracts/pb/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -26,6 +27,7 @@ type Email struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Recipient     string                 `protobuf:"bytes,1,opt,name=recipient,proto3" json:"recipient,omitempty"`
 	Subject       string                 `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
+	Body          string                 `protobuf:"bytes,3,opt,name=body,proto3" json:"body,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -74,16 +76,144 @@ func (x *Email) GetSubject() string {
 	return ""
 }
 
+func (x *Email) GetBody() string {
+	if x != nil {
+		return x.Body
+	}
+	return ""
+}
+
+type SendEmailRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Module         string                 `protobuf:"bytes,1,opt,name=module,proto3" json:"module,omitempty"`
+	Email          *Email                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *SendEmailRequest) Reset() {
+	*x = SendEmailRequest{}
+	mi := &file_notification_email_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SendEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendEmailRequest) ProtoMessage() {}
+
+func (x *SendEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_notification_email_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendEmailRequest.ProtoReflect.Descriptor instead.
+func (*SendEmailRequest) Descriptor() ([]byte, []int) {
+	return file_notification_email_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *SendEmailRequest) GetModule() string {
+	if x != nil {
+		return x.Module
+	}
+	return ""
+}
+
+func (x *SendEmailRequest) GetEmail() *Email {
+	if x != nil {
+		return x.Email
+	}
+	return nil
+}
+
+func (x *SendEmailRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
+}
+
+type SendEmailResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Message        string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	SentAt         *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=sent_at,json=sentAt,proto3" json:"sent_at,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *SendEmailResponse) Reset() {
+	*x = SendEmailResponse{}
+	mi := &file_notification_email_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SendEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendEmailResponse) ProtoMessage() {}
+
+func (x *SendEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_notification_email_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendEmailResponse.ProtoReflect.Descriptor instead.
+func (*SendEmailResponse) Descriptor() ([]byte, []int) {
+	return file_notification_email_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *SendEmailResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
+func (x *SendEmailResponse) GetSentAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.SentAt
+	}
+	return nil
+}
+
+func (x *SendEmailResponse) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
+	}
+	return nil
+}
+
 type RegisterEmailRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         *Email                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Email          *Email                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *RegisterEmailRequest) Reset() {
 	*x = RegisterEmailRequest{}
-	mi := &file_notification_email_proto_msgTypes[1]
+	mi := &file_notification_email_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -95,7 +225,7 @@ func (x *RegisterEmailRequest) String() string {
 func (*RegisterEmailRequest) ProtoMessage() {}
 
 func (x *RegisterEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_notification_email_proto_msgTypes[1]
+	mi := &file_notification_email_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -108,12 +238,19 @@ func (x *RegisterEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterEmailRequest.ProtoReflect.Descriptor instead.
 func (*RegisterEmailRequest) Descriptor() ([]byte, []int) {
-	return file_notification_email_proto_rawDescGZIP(), []int{1}
+	return file_notification_email_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *RegisterEmailRequest) GetEmail() *Email {
 	if x != nil {
 		return x.Email
+	}
+	return nil
+}
+
+func (x *RegisterEmailRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
 	}
 	return nil
 }
@@ -128,7 +265,7 @@ type RegisterEmailResponse struct {
 
 func (x *RegisterEmailResponse) Reset() {
 	*x = RegisterEmailResponse{}
-	mi := &file_notification_email_proto_msgTypes[2]
+	mi := &file_notification_email_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -140,7 +277,7 @@ func (x *RegisterEmailResponse) String() string {
 func (*RegisterEmailResponse) ProtoMessage() {}
 
 func (x *RegisterEmailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_notification_email_proto_msgTypes[2]
+	mi := &file_notification_email_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -153,7 +290,7 @@ func (x *RegisterEmailResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterEmailResponse.ProtoReflect.Descriptor instead.
 func (*RegisterEmailResponse) Descriptor() ([]byte, []int) {
-	return file_notification_email_proto_rawDescGZIP(), []int{2}
+	return file_notification_email_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *RegisterEmailResponse) GetMessage() string {
@@ -171,15 +308,16 @@ func (x *RegisterEmailResponse) GetSentAt() *timestamppb.Timestamp {
 }
 
 type ResetPasswordEmailRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Email         *Email                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Email          *Email                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ResetPasswordEmailRequest) Reset() {
 	*x = ResetPasswordEmailRequest{}
-	mi := &file_notification_email_proto_msgTypes[3]
+	mi := &file_notification_email_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -191,7 +329,7 @@ func (x *ResetPasswordEmailRequest) String() string {
 func (*ResetPasswordEmailRequest) ProtoMessage() {}
 
 func (x *ResetPasswordEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_notification_email_proto_msgTypes[3]
+	mi := &file_notification_email_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -204,12 +342,19 @@ func (x *ResetPasswordEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPasswordEmailRequest.ProtoReflect.Descriptor instead.
 func (*ResetPasswordEmailRequest) Descriptor() ([]byte, []int) {
-	return file_notification_email_proto_rawDescGZIP(), []int{3}
+	return file_notification_email_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ResetPasswordEmailRequest) GetEmail() *Email {
 	if x != nil {
 		return x.Email
+	}
+	return nil
+}
+
+func (x *ResetPasswordEmailRequest) GetRequestContext() *common.RequestContext {
+	if x != nil {
+		return x.RequestContext
 	}
 	return nil
 }
@@ -224,7 +369,7 @@ type ResetPasswordEmailResponse struct {
 
 func (x *ResetPasswordEmailResponse) Reset() {
 	*x = ResetPasswordEmailResponse{}
-	mi := &file_notification_email_proto_msgTypes[4]
+	mi := &file_notification_email_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -236,7 +381,7 @@ func (x *ResetPasswordEmailResponse) String() string {
 func (*ResetPasswordEmailResponse) ProtoMessage() {}
 
 func (x *ResetPasswordEmailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_notification_email_proto_msgTypes[4]
+	mi := &file_notification_email_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -249,7 +394,7 @@ func (x *ResetPasswordEmailResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ResetPasswordEmailResponse.ProtoReflect.Descriptor instead.
 func (*ResetPasswordEmailResponse) Descriptor() ([]byte, []int) {
-	return file_notification_email_proto_rawDescGZIP(), []int{4}
+	return file_notification_email_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ResetPasswordEmailResponse) GetMessage() string {
@@ -270,21 +415,33 @@ var File_notification_email_proto protoreflect.FileDescriptor
 
 const file_notification_email_proto_rawDesc = "" +
 	"\n" +
-	"\x18notification_email.proto\x12\x12notification_email\x1a\x1fgoogle/protobuf/timestamp.proto\"?\n" +
+	"\x18notification_email.proto\x12\x12notification_email\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"S\n" +
 	"\x05Email\x12\x1c\n" +
 	"\trecipient\x18\x01 \x01(\tR\trecipient\x12\x18\n" +
-	"\asubject\x18\x02 \x01(\tR\asubject\"G\n" +
+	"\asubject\x18\x02 \x01(\tR\asubject\x12\x12\n" +
+	"\x04body\x18\x03 \x01(\tR\x04body\"\x9c\x01\n" +
+	"\x10SendEmailRequest\x12\x16\n" +
+	"\x06module\x18\x01 \x01(\tR\x06module\x12/\n" +
+	"\x05email\x18\x02 \x01(\v2\x19.notification_email.EmailR\x05email\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\xa3\x01\n" +
+	"\x11SendEmailResponse\x12\x18\n" +
+	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
+	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x88\x01\n" +
 	"\x14RegisterEmailRequest\x12/\n" +
-	"\x05email\x18\x01 \x01(\v2\x19.notification_email.EmailR\x05email\"f\n" +
+	"\x05email\x18\x01 \x01(\v2\x19.notification_email.EmailR\x05email\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"f\n" +
 	"\x15RegisterEmailResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
-	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\"L\n" +
+	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\"\x8d\x01\n" +
 	"\x19ResetPasswordEmailRequest\x12/\n" +
-	"\x05email\x18\x01 \x01(\v2\x19.notification_email.EmailR\x05email\"k\n" +
+	"\x05email\x18\x01 \x01(\v2\x19.notification_email.EmailR\x05email\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"k\n" +
 	"\x1aResetPasswordEmailResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
-	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt2\xf5\x01\n" +
-	"\x18NotificationEmailService\x12d\n" +
+	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt2\xcf\x02\n" +
+	"\x18NotificationEmailService\x12X\n" +
+	"\tSendEmail\x12$.notification_email.SendEmailRequest\x1a%.notification_email.SendEmailResponse\x12d\n" +
 	"\rRegisterEmail\x12(.notification_email.RegisterEmailRequest\x1a).notification_email.RegisterEmailResponse\x12s\n" +
 	"\x12ResetPasswordEmail\x12-.notification_email.ResetPasswordEmailRequest\x1a..notification_email.ResetPasswordEmailResponseB;Z9github.com/rdev-org/proto-contracts/pb/notification_emailb\x06proto3"
 
@@ -300,29 +457,40 @@ func file_notification_email_proto_rawDescGZIP() []byte {
 	return file_notification_email_proto_rawDescData
 }
 
-var file_notification_email_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_notification_email_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_notification_email_proto_goTypes = []any{
 	(*Email)(nil),                      // 0: notification_email.Email
-	(*RegisterEmailRequest)(nil),       // 1: notification_email.RegisterEmailRequest
-	(*RegisterEmailResponse)(nil),      // 2: notification_email.RegisterEmailResponse
-	(*ResetPasswordEmailRequest)(nil),  // 3: notification_email.ResetPasswordEmailRequest
-	(*ResetPasswordEmailResponse)(nil), // 4: notification_email.ResetPasswordEmailResponse
-	(*timestamppb.Timestamp)(nil),      // 5: google.protobuf.Timestamp
+	(*SendEmailRequest)(nil),           // 1: notification_email.SendEmailRequest
+	(*SendEmailResponse)(nil),          // 2: notification_email.SendEmailResponse
+	(*RegisterEmailRequest)(nil),       // 3: notification_email.RegisterEmailRequest
+	(*RegisterEmailResponse)(nil),      // 4: notification_email.RegisterEmailResponse
+	(*ResetPasswordEmailRequest)(nil),  // 5: notification_email.ResetPasswordEmailRequest
+	(*ResetPasswordEmailResponse)(nil), // 6: notification_email.ResetPasswordEmailResponse
+	(*common.RequestContext)(nil),      // 7: common.RequestContext
+	(*timestamppb.Timestamp)(nil),      // 8: google.protobuf.Timestamp
 }
 var file_notification_email_proto_depIdxs = []int32{
-	0, // 0: notification_email.RegisterEmailRequest.email:type_name -> notification_email.Email
-	5, // 1: notification_email.RegisterEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
-	0, // 2: notification_email.ResetPasswordEmailRequest.email:type_name -> notification_email.Email
-	5, // 3: notification_email.ResetPasswordEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
-	1, // 4: notification_email.NotificationEmailService.RegisterEmail:input_type -> notification_email.RegisterEmailRequest
-	3, // 5: notification_email.NotificationEmailService.ResetPasswordEmail:input_type -> notification_email.ResetPasswordEmailRequest
-	2, // 6: notification_email.NotificationEmailService.RegisterEmail:output_type -> notification_email.RegisterEmailResponse
-	4, // 7: notification_email.NotificationEmailService.ResetPasswordEmail:output_type -> notification_email.ResetPasswordEmailResponse
-	6, // [6:8] is the sub-list for method output_type
-	4, // [4:6] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	0,  // 0: notification_email.SendEmailRequest.email:type_name -> notification_email.Email
+	7,  // 1: notification_email.SendEmailRequest.request_context:type_name -> common.RequestContext
+	8,  // 2: notification_email.SendEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	7,  // 3: notification_email.SendEmailResponse.request_context:type_name -> common.RequestContext
+	0,  // 4: notification_email.RegisterEmailRequest.email:type_name -> notification_email.Email
+	7,  // 5: notification_email.RegisterEmailRequest.request_context:type_name -> common.RequestContext
+	8,  // 6: notification_email.RegisterEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	0,  // 7: notification_email.ResetPasswordEmailRequest.email:type_name -> notification_email.Email
+	7,  // 8: notification_email.ResetPasswordEmailRequest.request_context:type_name -> common.RequestContext
+	8,  // 9: notification_email.ResetPasswordEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	1,  // 10: notification_email.NotificationEmailService.SendEmail:input_type -> notification_email.SendEmailRequest
+	3,  // 11: notification_email.NotificationEmailService.RegisterEmail:input_type -> notification_email.RegisterEmailRequest
+	5,  // 12: notification_email.NotificationEmailService.ResetPasswordEmail:input_type -> notification_email.ResetPasswordEmailRequest
+	2,  // 13: notification_email.NotificationEmailService.SendEmail:output_type -> notification_email.SendEmailResponse
+	4,  // 14: notification_email.NotificationEmailService.RegisterEmail:output_type -> notification_email.RegisterEmailResponse
+	6,  // 15: notification_email.NotificationEmailService.ResetPasswordEmail:output_type -> notification_email.ResetPasswordEmailResponse
+	13, // [13:16] is the sub-list for method output_type
+	10, // [10:13] is the sub-list for method input_type
+	10, // [10:10] is the sub-list for extension type_name
+	10, // [10:10] is the sub-list for extension extendee
+	0,  // [0:10] is the sub-list for field type_name
 }
 
 func init() { file_notification_email_proto_init() }
@@ -336,7 +504,7 @@ func file_notification_email_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_notification_email_proto_rawDesc), len(file_notification_email_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   5,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
