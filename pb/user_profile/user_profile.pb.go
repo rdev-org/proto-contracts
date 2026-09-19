@@ -707,7 +707,7 @@ const file_user_profile_proto_rawDesc = "" +
 	"\vListProfile\x12 .user_profile.ListProfileRequest\x1a!.user_profile.ListProfileResponse\x12X\n" +
 	"\rCreateProfile\x12\".user_profile.CreateProfileRequest\x1a#.user_profile.CreateProfileResponse\x12X\n" +
 	"\rUpdateProfile\x12\".user_profile.UpdateProfileRequest\x1a#.user_profile.UpdateProfileResponse\x12X\n" +
-	"\rDeleteProfile\x12\".user_profile.DeleteProfileRequest\x1a#.user_profile.DeleteProfileResponseB2Z0github.com/rdev-org/proto-contracts/user_profileb\x06proto3"
+	"\rDeleteProfile\x12\".user_profile.DeleteProfileRequest\x1a#.user_profile.DeleteProfileResponseB5Z3github.com/rdev-org/proto-contracts/pb/user_profileb\x06proto3"
 
 var (
 	file_user_profile_proto_rawDescOnce sync.Once
