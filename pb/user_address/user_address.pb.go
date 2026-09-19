@@ -23,20 +23,19 @@ const (
 )
 
 type Address struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Meta           *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
-	UserId         string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	AddressLine1   string                 `protobuf:"bytes,4,opt,name=address_line1,json=addressLine1,proto3" json:"address_line1,omitempty"`
-	AddressLine2   string                 `protobuf:"bytes,5,opt,name=address_line2,json=addressLine2,proto3" json:"address_line2,omitempty"`
-	City           string                 `protobuf:"bytes,6,opt,name=city,proto3" json:"city,omitempty"`
-	StateProvince  string                 `protobuf:"bytes,7,opt,name=state_province,json=stateProvince,proto3" json:"state_province,omitempty"`
-	PostalCode     string                 `protobuf:"bytes,8,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
-	Country        string                 `protobuf:"bytes,9,opt,name=country,proto3" json:"country,omitempty"`
-	IsDefault      bool                   `protobuf:"varint,10,opt,name=is_default,json=isDefault,proto3" json:"is_default,omitempty"`
-	AddressType    string                 `protobuf:"bytes,11,opt,name=address_type,json=addressType,proto3" json:"address_type,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Meta          *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	AddressLine1  string                 `protobuf:"bytes,3,opt,name=address_line1,json=addressLine1,proto3" json:"address_line1,omitempty"`
+	AddressLine2  string                 `protobuf:"bytes,4,opt,name=address_line2,json=addressLine2,proto3" json:"address_line2,omitempty"`
+	City          string                 `protobuf:"bytes,5,opt,name=city,proto3" json:"city,omitempty"`
+	StateProvince string                 `protobuf:"bytes,6,opt,name=state_province,json=stateProvince,proto3" json:"state_province,omitempty"`
+	PostalCode    string                 `protobuf:"bytes,7,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	Country       string                 `protobuf:"bytes,8,opt,name=country,proto3" json:"country,omitempty"`
+	IsDefault     bool                   `protobuf:"varint,9,opt,name=is_default,json=isDefault,proto3" json:"is_default,omitempty"`
+	AddressType   string                 `protobuf:"bytes,10,opt,name=address_type,json=addressType,proto3" json:"address_type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Address) Reset() {
@@ -72,13 +71,6 @@ func (*Address) Descriptor() ([]byte, []int) {
 func (x *Address) GetMeta() *common.Metadata {
 	if x != nil {
 		return x.Meta
-	}
-	return nil
-}
-
-func (x *Address) GetRequestContext() *common.RequestContext {
-	if x != nil {
-		return x.RequestContext
 	}
 	return nil
 }
@@ -798,22 +790,21 @@ var File_user_address_proto protoreflect.FileDescriptor
 
 const file_user_address_proto_rawDesc = "" +
 	"\n" +
-	"\x12user_address.proto\x12\fuser_address\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\"\x8b\x03\n" +
+	"\x12user_address.proto\x12\fuser_address\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\"\xca\x02\n" +
 	"\aAddress\x12$\n" +
-	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12?\n" +
-	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\x12\x17\n" +
-	"\auser_id\x18\x03 \x01(\tR\x06userId\x12#\n" +
-	"\raddress_line1\x18\x04 \x01(\tR\faddressLine1\x12#\n" +
-	"\raddress_line2\x18\x05 \x01(\tR\faddressLine2\x12\x12\n" +
-	"\x04city\x18\x06 \x01(\tR\x04city\x12%\n" +
-	"\x0estate_province\x18\a \x01(\tR\rstateProvince\x12\x1f\n" +
-	"\vpostal_code\x18\b \x01(\tR\n" +
+	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
+	"\raddress_line1\x18\x03 \x01(\tR\faddressLine1\x12#\n" +
+	"\raddress_line2\x18\x04 \x01(\tR\faddressLine2\x12\x12\n" +
+	"\x04city\x18\x05 \x01(\tR\x04city\x12%\n" +
+	"\x0estate_province\x18\x06 \x01(\tR\rstateProvince\x12\x1f\n" +
+	"\vpostal_code\x18\a \x01(\tR\n" +
 	"postalCode\x12\x18\n" +
-	"\acountry\x18\t \x01(\tR\acountry\x12\x1d\n" +
+	"\acountry\x18\b \x01(\tR\acountry\x12\x1d\n" +
 	"\n" +
-	"is_default\x18\n" +
-	" \x01(\bR\tisDefault\x12!\n" +
-	"\faddress_type\x18\v \x01(\tR\vaddressType\"h\n" +
+	"is_default\x18\t \x01(\bR\tisDefault\x12!\n" +
+	"\faddress_type\x18\n" +
+	" \x01(\tR\vaddressType\"h\n" +
 	"\x11GetAddressRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"E\n" +
@@ -901,40 +892,39 @@ var file_user_address_proto_goTypes = []any{
 }
 var file_user_address_proto_depIdxs = []int32{
 	13, // 0: user_address.Address.meta:type_name -> common.Metadata
-	14, // 1: user_address.Address.request_context:type_name -> common.RequestContext
-	14, // 2: user_address.GetAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 3: user_address.GetAddressResponse.address:type_name -> user_address.Address
-	15, // 4: user_address.ListAddressRequest.filter:type_name -> common.Filter
-	16, // 5: user_address.ListAddressRequest.pagination:type_name -> common.PaginationRequest
-	14, // 6: user_address.ListAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 7: user_address.ListAddressResponse.address:type_name -> user_address.Address
-	17, // 8: user_address.ListAddressResponse.pagination:type_name -> common.PaginationResponse
-	0,  // 9: user_address.CreateAddressRequest.address:type_name -> user_address.Address
-	14, // 10: user_address.CreateAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 11: user_address.CreateAddressResponse.address:type_name -> user_address.Address
-	0,  // 12: user_address.UpdateAddressRequest.address:type_name -> user_address.Address
-	14, // 13: user_address.UpdateAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 14: user_address.UpdateAddressResponse.address:type_name -> user_address.Address
-	14, // 15: user_address.DeleteAddressRequest.request_context:type_name -> common.RequestContext
-	14, // 16: user_address.DefaultAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 17: user_address.DefaultAddressResponse.address:type_name -> user_address.Address
-	1,  // 18: user_address.UserAddressService.GetAddress:input_type -> user_address.GetAddressRequest
-	3,  // 19: user_address.UserAddressService.ListAddress:input_type -> user_address.ListAddressRequest
-	5,  // 20: user_address.UserAddressService.CreateAddress:input_type -> user_address.CreateAddressRequest
-	7,  // 21: user_address.UserAddressService.UpdateAddress:input_type -> user_address.UpdateAddressRequest
-	9,  // 22: user_address.UserAddressService.DeleteAddress:input_type -> user_address.DeleteAddressRequest
-	11, // 23: user_address.UserAddressService.DefaultAddress:input_type -> user_address.DefaultAddressRequest
-	2,  // 24: user_address.UserAddressService.GetAddress:output_type -> user_address.GetAddressResponse
-	4,  // 25: user_address.UserAddressService.ListAddress:output_type -> user_address.ListAddressResponse
-	6,  // 26: user_address.UserAddressService.CreateAddress:output_type -> user_address.CreateAddressResponse
-	8,  // 27: user_address.UserAddressService.UpdateAddress:output_type -> user_address.UpdateAddressResponse
-	10, // 28: user_address.UserAddressService.DeleteAddress:output_type -> user_address.DeleteAddressResponse
-	12, // 29: user_address.UserAddressService.DefaultAddress:output_type -> user_address.DefaultAddressResponse
-	24, // [24:30] is the sub-list for method output_type
-	18, // [18:24] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	14, // 1: user_address.GetAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 2: user_address.GetAddressResponse.address:type_name -> user_address.Address
+	15, // 3: user_address.ListAddressRequest.filter:type_name -> common.Filter
+	16, // 4: user_address.ListAddressRequest.pagination:type_name -> common.PaginationRequest
+	14, // 5: user_address.ListAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 6: user_address.ListAddressResponse.address:type_name -> user_address.Address
+	17, // 7: user_address.ListAddressResponse.pagination:type_name -> common.PaginationResponse
+	0,  // 8: user_address.CreateAddressRequest.address:type_name -> user_address.Address
+	14, // 9: user_address.CreateAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 10: user_address.CreateAddressResponse.address:type_name -> user_address.Address
+	0,  // 11: user_address.UpdateAddressRequest.address:type_name -> user_address.Address
+	14, // 12: user_address.UpdateAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 13: user_address.UpdateAddressResponse.address:type_name -> user_address.Address
+	14, // 14: user_address.DeleteAddressRequest.request_context:type_name -> common.RequestContext
+	14, // 15: user_address.DefaultAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 16: user_address.DefaultAddressResponse.address:type_name -> user_address.Address
+	1,  // 17: user_address.UserAddressService.GetAddress:input_type -> user_address.GetAddressRequest
+	3,  // 18: user_address.UserAddressService.ListAddress:input_type -> user_address.ListAddressRequest
+	5,  // 19: user_address.UserAddressService.CreateAddress:input_type -> user_address.CreateAddressRequest
+	7,  // 20: user_address.UserAddressService.UpdateAddress:input_type -> user_address.UpdateAddressRequest
+	9,  // 21: user_address.UserAddressService.DeleteAddress:input_type -> user_address.DeleteAddressRequest
+	11, // 22: user_address.UserAddressService.DefaultAddress:input_type -> user_address.DefaultAddressRequest
+	2,  // 23: user_address.UserAddressService.GetAddress:output_type -> user_address.GetAddressResponse
+	4,  // 24: user_address.UserAddressService.ListAddress:output_type -> user_address.ListAddressResponse
+	6,  // 25: user_address.UserAddressService.CreateAddress:output_type -> user_address.CreateAddressResponse
+	8,  // 26: user_address.UserAddressService.UpdateAddress:output_type -> user_address.UpdateAddressResponse
+	10, // 27: user_address.UserAddressService.DeleteAddress:output_type -> user_address.DeleteAddressResponse
+	12, // 28: user_address.UserAddressService.DefaultAddress:output_type -> user_address.DefaultAddressResponse
+	23, // [23:29] is the sub-list for method output_type
+	17, // [17:23] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_user_address_proto_init() }

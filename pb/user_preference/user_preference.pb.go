@@ -24,17 +24,16 @@ const (
 )
 
 type Preference struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Meta           *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
-	UserId         string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Language       string                 `protobuf:"bytes,4,opt,name=language,proto3" json:"language,omitempty"`
-	Currency       string                 `protobuf:"bytes,5,opt,name=currency,proto3" json:"currency,omitempty"`
-	EmailOptIn     bool                   `protobuf:"varint,6,opt,name=email_opt_in,json=emailOptIn,proto3" json:"email_opt_in,omitempty"`
-	SmsOptIn       bool                   `protobuf:"varint,7,opt,name=sms_opt_in,json=smsOptIn,proto3" json:"sms_opt_in,omitempty"`
-	Settings       *structpb.Struct       `protobuf:"bytes,8,opt,name=settings,proto3" json:"settings,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Meta          *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Language      string                 `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	Currency      string                 `protobuf:"bytes,4,opt,name=currency,proto3" json:"currency,omitempty"`
+	EmailOptIn    bool                   `protobuf:"varint,5,opt,name=email_opt_in,json=emailOptIn,proto3" json:"email_opt_in,omitempty"`
+	SmsOptIn      bool                   `protobuf:"varint,6,opt,name=sms_opt_in,json=smsOptIn,proto3" json:"sms_opt_in,omitempty"`
+	Settings      *structpb.Struct       `protobuf:"bytes,7,opt,name=settings,proto3" json:"settings,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Preference) Reset() {
@@ -70,13 +69,6 @@ func (*Preference) Descriptor() ([]byte, []int) {
 func (x *Preference) GetMeta() *common.Metadata {
 	if x != nil {
 		return x.Meta
-	}
-	return nil
-}
-
-func (x *Preference) GetRequestContext() *common.RequestContext {
-	if x != nil {
-		return x.RequestContext
 	}
 	return nil
 }
@@ -647,19 +639,18 @@ var File_user_preference_proto protoreflect.FileDescriptor
 
 const file_user_preference_proto_rawDesc = "" +
 	"\n" +
-	"\x15user_preference.proto\x12\x0fuser_preference\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xb9\x02\n" +
+	"\x15user_preference.proto\x12\x0fuser_preference\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xf8\x01\n" +
 	"\n" +
 	"Preference\x12$\n" +
-	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12?\n" +
-	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\x12\x17\n" +
-	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x1a\n" +
-	"\blanguage\x18\x04 \x01(\tR\blanguage\x12\x1a\n" +
-	"\bcurrency\x18\x05 \x01(\tR\bcurrency\x12 \n" +
-	"\femail_opt_in\x18\x06 \x01(\bR\n" +
+	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1a\n" +
+	"\blanguage\x18\x03 \x01(\tR\blanguage\x12\x1a\n" +
+	"\bcurrency\x18\x04 \x01(\tR\bcurrency\x12 \n" +
+	"\femail_opt_in\x18\x05 \x01(\bR\n" +
 	"emailOptIn\x12\x1c\n" +
 	"\n" +
-	"sms_opt_in\x18\a \x01(\bR\bsmsOptIn\x123\n" +
-	"\bsettings\x18\b \x01(\v2\x17.google.protobuf.StructR\bsettings\"k\n" +
+	"sms_opt_in\x18\x06 \x01(\bR\bsmsOptIn\x123\n" +
+	"\bsettings\x18\a \x01(\v2\x17.google.protobuf.StructR\bsettings\"k\n" +
 	"\x14GetPreferenceRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"T\n" +
@@ -739,45 +730,44 @@ var file_user_preference_proto_goTypes = []any{
 	(*DeletePreferenceRequest)(nil),   // 9: user_preference.DeletePreferenceRequest
 	(*DeletePreferenceResponse)(nil),  // 10: user_preference.DeletePreferenceResponse
 	(*common.Metadata)(nil),           // 11: common.Metadata
-	(*common.RequestContext)(nil),     // 12: common.RequestContext
-	(*structpb.Struct)(nil),           // 13: google.protobuf.Struct
+	(*structpb.Struct)(nil),           // 12: google.protobuf.Struct
+	(*common.RequestContext)(nil),     // 13: common.RequestContext
 	(*common.Filter)(nil),             // 14: common.Filter
 	(*common.PaginationRequest)(nil),  // 15: common.PaginationRequest
 	(*common.PaginationResponse)(nil), // 16: common.PaginationResponse
 }
 var file_user_preference_proto_depIdxs = []int32{
 	11, // 0: user_preference.Preference.meta:type_name -> common.Metadata
-	12, // 1: user_preference.Preference.request_context:type_name -> common.RequestContext
-	13, // 2: user_preference.Preference.settings:type_name -> google.protobuf.Struct
-	12, // 3: user_preference.GetPreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 4: user_preference.GetPreferenceResponse.preference:type_name -> user_preference.Preference
-	14, // 5: user_preference.ListPreferenceRequest.filter:type_name -> common.Filter
-	15, // 6: user_preference.ListPreferenceRequest.pagination:type_name -> common.PaginationRequest
-	12, // 7: user_preference.ListPreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 8: user_preference.ListPreferenceResponse.preference:type_name -> user_preference.Preference
-	16, // 9: user_preference.ListPreferenceResponse.pagination:type_name -> common.PaginationResponse
-	0,  // 10: user_preference.CreatePreferenceRequest.preference:type_name -> user_preference.Preference
-	12, // 11: user_preference.CreatePreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 12: user_preference.CreatePreferenceResponse.preference:type_name -> user_preference.Preference
-	0,  // 13: user_preference.UpdatePreferenceRequest.preference:type_name -> user_preference.Preference
-	12, // 14: user_preference.UpdatePreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 15: user_preference.UpdatePreferenceResponse.preference:type_name -> user_preference.Preference
-	12, // 16: user_preference.DeletePreferenceRequest.request_context:type_name -> common.RequestContext
-	1,  // 17: user_preference.UserPreferenceService.GetPreference:input_type -> user_preference.GetPreferenceRequest
-	3,  // 18: user_preference.UserPreferenceService.ListPreference:input_type -> user_preference.ListPreferenceRequest
-	5,  // 19: user_preference.UserPreferenceService.CreatePreference:input_type -> user_preference.CreatePreferenceRequest
-	7,  // 20: user_preference.UserPreferenceService.UpdatePreference:input_type -> user_preference.UpdatePreferenceRequest
-	9,  // 21: user_preference.UserPreferenceService.DeletePreference:input_type -> user_preference.DeletePreferenceRequest
-	2,  // 22: user_preference.UserPreferenceService.GetPreference:output_type -> user_preference.GetPreferenceResponse
-	4,  // 23: user_preference.UserPreferenceService.ListPreference:output_type -> user_preference.ListPreferenceResponse
-	6,  // 24: user_preference.UserPreferenceService.CreatePreference:output_type -> user_preference.CreatePreferenceResponse
-	8,  // 25: user_preference.UserPreferenceService.UpdatePreference:output_type -> user_preference.UpdatePreferenceResponse
-	10, // 26: user_preference.UserPreferenceService.DeletePreference:output_type -> user_preference.DeletePreferenceResponse
-	22, // [22:27] is the sub-list for method output_type
-	17, // [17:22] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	12, // 1: user_preference.Preference.settings:type_name -> google.protobuf.Struct
+	13, // 2: user_preference.GetPreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 3: user_preference.GetPreferenceResponse.preference:type_name -> user_preference.Preference
+	14, // 4: user_preference.ListPreferenceRequest.filter:type_name -> common.Filter
+	15, // 5: user_preference.ListPreferenceRequest.pagination:type_name -> common.PaginationRequest
+	13, // 6: user_preference.ListPreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 7: user_preference.ListPreferenceResponse.preference:type_name -> user_preference.Preference
+	16, // 8: user_preference.ListPreferenceResponse.pagination:type_name -> common.PaginationResponse
+	0,  // 9: user_preference.CreatePreferenceRequest.preference:type_name -> user_preference.Preference
+	13, // 10: user_preference.CreatePreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 11: user_preference.CreatePreferenceResponse.preference:type_name -> user_preference.Preference
+	0,  // 12: user_preference.UpdatePreferenceRequest.preference:type_name -> user_preference.Preference
+	13, // 13: user_preference.UpdatePreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 14: user_preference.UpdatePreferenceResponse.preference:type_name -> user_preference.Preference
+	13, // 15: user_preference.DeletePreferenceRequest.request_context:type_name -> common.RequestContext
+	1,  // 16: user_preference.UserPreferenceService.GetPreference:input_type -> user_preference.GetPreferenceRequest
+	3,  // 17: user_preference.UserPreferenceService.ListPreference:input_type -> user_preference.ListPreferenceRequest
+	5,  // 18: user_preference.UserPreferenceService.CreatePreference:input_type -> user_preference.CreatePreferenceRequest
+	7,  // 19: user_preference.UserPreferenceService.UpdatePreference:input_type -> user_preference.UpdatePreferenceRequest
+	9,  // 20: user_preference.UserPreferenceService.DeletePreference:input_type -> user_preference.DeletePreferenceRequest
+	2,  // 21: user_preference.UserPreferenceService.GetPreference:output_type -> user_preference.GetPreferenceResponse
+	4,  // 22: user_preference.UserPreferenceService.ListPreference:output_type -> user_preference.ListPreferenceResponse
+	6,  // 23: user_preference.UserPreferenceService.CreatePreference:output_type -> user_preference.CreatePreferenceResponse
+	8,  // 24: user_preference.UserPreferenceService.UpdatePreference:output_type -> user_preference.UpdatePreferenceResponse
+	10, // 25: user_preference.UserPreferenceService.DeletePreference:output_type -> user_preference.DeletePreferenceResponse
+	21, // [21:26] is the sub-list for method output_type
+	16, // [16:21] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_user_preference_proto_init() }

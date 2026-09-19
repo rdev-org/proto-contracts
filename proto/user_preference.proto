@@ -18,14 +18,13 @@ service UserPreferenceService {
 }
 
 message Preference {
-  common.Metadata        meta            = 1;
-  common.RequestContext  request_context = 2;
-  string                 user_id         = 3;
-  string                 language        = 4;
-  string                 currency        = 5;
-  bool                   email_opt_in    = 6;
-  bool                   sms_opt_in      = 7;
-  google.protobuf.Struct settings        = 8;
+  common.Metadata        meta         = 1;
+  string                 user_id      = 2;
+  string                 language     = 3;
+  string                 currency     = 4;
+  bool                   email_opt_in = 5;
+  bool                   sms_opt_in   = 6;
+  google.protobuf.Struct settings     = 7;
 }
 
 message GetPreferenceRequest {

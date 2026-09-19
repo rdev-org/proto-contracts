@@ -23,19 +23,18 @@ const (
 )
 
 type Profile struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Meta           *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
-	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
-	UserId         string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	FirstName      string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
-	MiddleName     string                 `protobuf:"bytes,5,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
-	LastName       string                 `protobuf:"bytes,6,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
-	MobileNumber   string                 `protobuf:"bytes,7,opt,name=mobile_number,json=mobileNumber,proto3" json:"mobile_number,omitempty"`
-	DateOfBirth    string                 `protobuf:"bytes,8,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
-	Gender         string                 `protobuf:"bytes,9,opt,name=gender,proto3" json:"gender,omitempty"`
-	Avatar         string                 `protobuf:"bytes,10,opt,name=avatar,proto3" json:"avatar,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Meta          *common.Metadata       `protobuf:"bytes,1,opt,name=meta,proto3" json:"meta,omitempty"`
+	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	MobileNumber  string                 `protobuf:"bytes,6,opt,name=mobile_number,json=mobileNumber,proto3" json:"mobile_number,omitempty"`
+	DateOfBirth   string                 `protobuf:"bytes,7,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
+	Gender        string                 `protobuf:"bytes,8,opt,name=gender,proto3" json:"gender,omitempty"`
+	Avatar        string                 `protobuf:"bytes,9,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Profile) Reset() {
@@ -71,13 +70,6 @@ func (*Profile) Descriptor() ([]byte, []int) {
 func (x *Profile) GetMeta() *common.Metadata {
 	if x != nil {
 		return x.Meta
-	}
-	return nil
-}
-
-func (x *Profile) GetRequestContext() *common.RequestContext {
-	if x != nil {
-		return x.RequestContext
 	}
 	return nil
 }
@@ -662,21 +654,19 @@ var File_user_profile_proto protoreflect.FileDescriptor
 
 const file_user_profile_proto_rawDesc = "" +
 	"\n" +
-	"\x12user_profile.proto\x12\fuser_profile\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\"\xdf\x02\n" +
+	"\x12user_profile.proto\x12\fuser_profile\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\"\x9e\x02\n" +
 	"\aProfile\x12$\n" +
-	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12?\n" +
-	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\x12\x17\n" +
-	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x1d\n" +
+	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
+	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1d\n" +
 	"\n" +
-	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1f\n" +
-	"\vmiddle_name\x18\x05 \x01(\tR\n" +
+	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1f\n" +
+	"\vmiddle_name\x18\x04 \x01(\tR\n" +
 	"middleName\x12\x1b\n" +
-	"\tlast_name\x18\x06 \x01(\tR\blastName\x12#\n" +
-	"\rmobile_number\x18\a \x01(\tR\fmobileNumber\x12\"\n" +
-	"\rdate_of_birth\x18\b \x01(\tR\vdateOfBirth\x12\x16\n" +
-	"\x06gender\x18\t \x01(\tR\x06gender\x12\x16\n" +
-	"\x06avatar\x18\n" +
-	" \x01(\tR\x06avatar\"h\n" +
+	"\tlast_name\x18\x05 \x01(\tR\blastName\x12#\n" +
+	"\rmobile_number\x18\x06 \x01(\tR\fmobileNumber\x12\"\n" +
+	"\rdate_of_birth\x18\a \x01(\tR\vdateOfBirth\x12\x16\n" +
+	"\x06gender\x18\b \x01(\tR\x06gender\x12\x16\n" +
+	"\x06avatar\x18\t \x01(\tR\x06avatar\"h\n" +
 	"\x11GetProfileRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"E\n" +
@@ -752,36 +742,35 @@ var file_user_profile_proto_goTypes = []any{
 }
 var file_user_profile_proto_depIdxs = []int32{
 	11, // 0: user_profile.Profile.meta:type_name -> common.Metadata
-	12, // 1: user_profile.Profile.request_context:type_name -> common.RequestContext
-	12, // 2: user_profile.GetProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 3: user_profile.GetProfileResponse.profile:type_name -> user_profile.Profile
-	13, // 4: user_profile.ListProfileRequest.filter:type_name -> common.Filter
-	14, // 5: user_profile.ListProfileRequest.pagination:type_name -> common.PaginationRequest
-	12, // 6: user_profile.ListProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 7: user_profile.ListProfileResponse.profile:type_name -> user_profile.Profile
-	15, // 8: user_profile.ListProfileResponse.pagination:type_name -> common.PaginationResponse
-	0,  // 9: user_profile.CreateProfileRequest.profile:type_name -> user_profile.Profile
-	12, // 10: user_profile.CreateProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 11: user_profile.CreateProfileResponse.profile:type_name -> user_profile.Profile
-	0,  // 12: user_profile.UpdateProfileRequest.profile:type_name -> user_profile.Profile
-	12, // 13: user_profile.UpdateProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 14: user_profile.UpdateProfileResponse.profile:type_name -> user_profile.Profile
-	12, // 15: user_profile.DeleteProfileRequest.request_context:type_name -> common.RequestContext
-	1,  // 16: user_profile.UserProfileService.GetProfile:input_type -> user_profile.GetProfileRequest
-	3,  // 17: user_profile.UserProfileService.ListProfile:input_type -> user_profile.ListProfileRequest
-	5,  // 18: user_profile.UserProfileService.CreateProfile:input_type -> user_profile.CreateProfileRequest
-	7,  // 19: user_profile.UserProfileService.UpdateProfile:input_type -> user_profile.UpdateProfileRequest
-	9,  // 20: user_profile.UserProfileService.DeleteProfile:input_type -> user_profile.DeleteProfileRequest
-	2,  // 21: user_profile.UserProfileService.GetProfile:output_type -> user_profile.GetProfileResponse
-	4,  // 22: user_profile.UserProfileService.ListProfile:output_type -> user_profile.ListProfileResponse
-	6,  // 23: user_profile.UserProfileService.CreateProfile:output_type -> user_profile.CreateProfileResponse
-	8,  // 24: user_profile.UserProfileService.UpdateProfile:output_type -> user_profile.UpdateProfileResponse
-	10, // 25: user_profile.UserProfileService.DeleteProfile:output_type -> user_profile.DeleteProfileResponse
-	21, // [21:26] is the sub-list for method output_type
-	16, // [16:21] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	12, // 1: user_profile.GetProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 2: user_profile.GetProfileResponse.profile:type_name -> user_profile.Profile
+	13, // 3: user_profile.ListProfileRequest.filter:type_name -> common.Filter
+	14, // 4: user_profile.ListProfileRequest.pagination:type_name -> common.PaginationRequest
+	12, // 5: user_profile.ListProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 6: user_profile.ListProfileResponse.profile:type_name -> user_profile.Profile
+	15, // 7: user_profile.ListProfileResponse.pagination:type_name -> common.PaginationResponse
+	0,  // 8: user_profile.CreateProfileRequest.profile:type_name -> user_profile.Profile
+	12, // 9: user_profile.CreateProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 10: user_profile.CreateProfileResponse.profile:type_name -> user_profile.Profile
+	0,  // 11: user_profile.UpdateProfileRequest.profile:type_name -> user_profile.Profile
+	12, // 12: user_profile.UpdateProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 13: user_profile.UpdateProfileResponse.profile:type_name -> user_profile.Profile
+	12, // 14: user_profile.DeleteProfileRequest.request_context:type_name -> common.RequestContext
+	1,  // 15: user_profile.UserProfileService.GetProfile:input_type -> user_profile.GetProfileRequest
+	3,  // 16: user_profile.UserProfileService.ListProfile:input_type -> user_profile.ListProfileRequest
+	5,  // 17: user_profile.UserProfileService.CreateProfile:input_type -> user_profile.CreateProfileRequest
+	7,  // 18: user_profile.UserProfileService.UpdateProfile:input_type -> user_profile.UpdateProfileRequest
+	9,  // 19: user_profile.UserProfileService.DeleteProfile:input_type -> user_profile.DeleteProfileRequest
+	2,  // 20: user_profile.UserProfileService.GetProfile:output_type -> user_profile.GetProfileResponse
+	4,  // 21: user_profile.UserProfileService.ListProfile:output_type -> user_profile.ListProfileResponse
+	6,  // 22: user_profile.UserProfileService.CreateProfile:output_type -> user_profile.CreateProfileResponse
+	8,  // 23: user_profile.UserProfileService.UpdateProfile:output_type -> user_profile.UpdateProfileResponse
+	10, // 24: user_profile.UserProfileService.DeleteProfile:output_type -> user_profile.DeleteProfileResponse
+	20, // [20:25] is the sub-list for method output_type
+	15, // [15:20] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_user_profile_proto_init() }
