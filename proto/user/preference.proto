@@ -46,7 +46,8 @@ message CreatePreferenceRequest {
 }
 
 message CreatePreferenceResponse {
-  Preference preference = 1;
+  string     uuid       = 1;
+  Preference preference = 2;
 }
 
 message UpdatePreferenceRequest {

@@ -45,14 +45,28 @@ message ListProfileResponse {
   common.PaginationResponse pagination = 2;
 }
 
+message CreateProfilePayload {
+  string  user_id       = 1;
+  string  email         = 2;
+  string  first_name    = 3;
+  string  middle_name   = 4;
+  string  last_name     = 5;
+  string  mobile_number = 6;
+  string  date_of_birth = 7;
+  string  gender        = 8;
+  string  avatar        = 9;
+  Address address       = 10;
+}
+
 message CreateProfileRequest {
   string                uuid            = 1;
-  Profile               profile         = 2;
+  CreateProfilePayload  payload         = 2;
   common.RequestContext request_context = 3;
 }
 
 message CreateProfileResponse {
-  Profile profile = 1;
+  string  uuid    = 1;
+  Profile profile = 2;
 }
 
 message UpdateProfileRequest {

@@ -26,8 +26,9 @@ const (
 type Email struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Recipient     string                 `protobuf:"bytes,1,opt,name=recipient,proto3" json:"recipient,omitempty"`
-	Subject       string                 `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
-	Body          string                 `protobuf:"bytes,3,opt,name=body,proto3" json:"body,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Subject       string                 `protobuf:"bytes,3,opt,name=subject,proto3" json:"subject,omitempty"`
+	Body          string                 `protobuf:"bytes,4,opt,name=body,proto3" json:"body,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -65,6 +66,13 @@ func (*Email) Descriptor() ([]byte, []int) {
 func (x *Email) GetRecipient() string {
 	if x != nil {
 		return x.Recipient
+	}
+	return ""
+}
+
+func (x *Email) GetName() string {
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
@@ -415,11 +423,12 @@ var File_notification_email_proto protoreflect.FileDescriptor
 
 const file_notification_email_proto_rawDesc = "" +
 	"\n" +
-	"\x18notification/email.proto\x12\fnotification\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"S\n" +
+	"\x18notification/email.proto\x12\fnotification\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"g\n" +
 	"\x05Email\x12\x1c\n" +
-	"\trecipient\x18\x01 \x01(\tR\trecipient\x12\x18\n" +
-	"\asubject\x18\x02 \x01(\tR\asubject\x12\x12\n" +
-	"\x04body\x18\x03 \x01(\tR\x04body\"\x96\x01\n" +
+	"\trecipient\x18\x01 \x01(\tR\trecipient\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
+	"\asubject\x18\x03 \x01(\tR\asubject\x12\x12\n" +
+	"\x04body\x18\x04 \x01(\tR\x04body\"\x96\x01\n" +
 	"\x10SendEmailRequest\x12\x16\n" +
 	"\x06module\x18\x01 \x01(\tR\x06module\x12)\n" +
 	"\x05email\x18\x02 \x01(\v2\x13.notification.EmailR\x05email\x12?\n" +

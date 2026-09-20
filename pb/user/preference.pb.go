@@ -385,7 +385,8 @@ func (x *CreatePreferenceRequest) GetRequestContext() *common.RequestContext {
 
 type CreatePreferenceResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Preference    *Preference            `protobuf:"bytes,1,opt,name=preference,proto3" json:"preference,omitempty"`
+	Uuid          string                 `protobuf:"bytes,1,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Preference    *Preference            `protobuf:"bytes,2,opt,name=preference,proto3" json:"preference,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -418,6 +419,13 @@ func (x *CreatePreferenceResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CreatePreferenceResponse.ProtoReflect.Descriptor instead.
 func (*CreatePreferenceResponse) Descriptor() ([]byte, []int) {
 	return file_user_preference_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *CreatePreferenceResponse) GetUuid() string {
+	if x != nil {
+		return x.Uuid
+	}
+	return ""
 }
 
 func (x *CreatePreferenceResponse) GetPreference() *Preference {
@@ -676,10 +684,11 @@ const file_user_preference_proto_rawDesc = "" +
 	"\n" +
 	"preference\x18\x02 \x01(\v2\x10.user.PreferenceR\n" +
 	"preference\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"L\n" +
-	"\x18CreatePreferenceResponse\x120\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"`\n" +
+	"\x18CreatePreferenceResponse\x12\x12\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x120\n" +
 	"\n" +
-	"preference\x18\x01 \x01(\v2\x10.user.PreferenceR\n" +
+	"preference\x18\x02 \x01(\v2\x10.user.PreferenceR\n" +
 	"preference\"\xa0\x01\n" +
 	"\x17UpdatePreferenceRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x120\n" +
