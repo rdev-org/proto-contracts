@@ -21,7 +21,7 @@ message Profile {
   string           date_of_birth = 7;
   string           gender        = 8;
   string           avatar        = 9;
-  repeated Address address       = 10;
+  repeated Address addresses     = 10;
   Preference       preference    = 11;
 }
 

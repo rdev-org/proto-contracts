@@ -33,7 +33,7 @@ type Profile struct {
 	DateOfBirth   string                 `protobuf:"bytes,7,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
 	Gender        string                 `protobuf:"bytes,8,opt,name=gender,proto3" json:"gender,omitempty"`
 	Avatar        string                 `protobuf:"bytes,9,opt,name=avatar,proto3" json:"avatar,omitempty"`
-	Address       []*Address             `protobuf:"bytes,10,rep,name=address,proto3" json:"address,omitempty"`
+	Addresses     []*Address             `protobuf:"bytes,10,rep,name=addresses,proto3" json:"addresses,omitempty"`
 	Preference    *Preference            `protobuf:"bytes,11,opt,name=preference,proto3" json:"preference,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -132,9 +132,9 @@ func (x *Profile) GetAvatar() string {
 	return ""
 }
 
-func (x *Profile) GetAddress() []*Address {
+func (x *Profile) GetAddresses() []*Address {
 	if x != nil {
-		return x.Address
+		return x.Addresses
 	}
 	return nil
 }
@@ -794,7 +794,7 @@ var File_user_profile_proto protoreflect.FileDescriptor
 
 const file_user_profile_proto_rawDesc = "" +
 	"\n" +
-	"\x12user/profile.proto\x12\x04user\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x12user/address.proto\x1a\x15user/preference.proto\"\xf9\x02\n" +
+	"\x12user/profile.proto\x12\x04user\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x12user/address.proto\x1a\x15user/preference.proto\"\xfd\x02\n" +
 	"\aProfile\x12$\n" +
 	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1d\n" +
@@ -806,9 +806,9 @@ const file_user_profile_proto_rawDesc = "" +
 	"\rmobile_number\x18\x06 \x01(\tR\fmobileNumber\x12\"\n" +
 	"\rdate_of_birth\x18\a \x01(\tR\vdateOfBirth\x12\x16\n" +
 	"\x06gender\x18\b \x01(\tR\x06gender\x12\x16\n" +
-	"\x06avatar\x18\t \x01(\tR\x06avatar\x12'\n" +
-	"\aaddress\x18\n" +
-	" \x03(\v2\r.user.AddressR\aaddress\x120\n" +
+	"\x06avatar\x18\t \x01(\tR\x06avatar\x12+\n" +
+	"\taddresses\x18\n" +
+	" \x03(\v2\r.user.AddressR\taddresses\x120\n" +
 	"\n" +
 	"preference\x18\v \x01(\v2\x10.user.PreferenceR\n" +
 	"preference\"h\n" +
@@ -898,7 +898,7 @@ var file_user_profile_proto_goTypes = []any{
 }
 var file_user_profile_proto_depIdxs = []int32{
 	12, // 0: user.Profile.meta:type_name -> common.Metadata
-	13, // 1: user.Profile.address:type_name -> user.Address
+	13, // 1: user.Profile.addresses:type_name -> user.Address
 	14, // 2: user.Profile.preference:type_name -> user.Preference
 	15, // 3: user.GetProfileRequest.request_context:type_name -> common.RequestContext
 	0,  // 4: user.GetProfileResponse.profile:type_name -> user.Profile
