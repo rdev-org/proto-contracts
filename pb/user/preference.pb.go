@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        v7.36.1
-// source: user_preference.proto
+// source: user/preference.proto
 
-package user_preference
+package user
 
 import (
 	common "github.com/rdev-org/proto-contracts/pb/common"
@@ -639,7 +639,7 @@ var File_user_preference_proto protoreflect.FileDescriptor
 
 const file_user_preference_proto_rawDesc = "" +
 	"\n" +
-	"\x15user_preference.proto\x12\x0fuser_preference\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xf8\x01\n" +
+	"\x15user/preference.proto\x12\x04user\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xf8\x01\n" +
 	"\n" +
 	"Preference\x12$\n" +
 	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
@@ -653,56 +653,50 @@ const file_user_preference_proto_rawDesc = "" +
 	"\bsettings\x18\a \x01(\v2\x17.google.protobuf.StructR\bsettings\"k\n" +
 	"\x14GetPreferenceRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
-	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"T\n" +
-	"\x15GetPreferenceResponse\x12;\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"I\n" +
+	"\x15GetPreferenceResponse\x120\n" +
 	"\n" +
-	"preference\x18\x01 \x01(\v2\x1b.user_preference.PreferenceR\n" +
+	"preference\x18\x01 \x01(\v2\x10.user.PreferenceR\n" +
 	"preference\"\xbb\x01\n" +
 	"\x15ListPreferenceRequest\x12&\n" +
 	"\x06filter\x18\x01 \x01(\v2\x0e.common.FilterR\x06filter\x129\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x19.common.PaginationRequestR\n" +
 	"pagination\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x91\x01\n" +
-	"\x16ListPreferenceResponse\x12;\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x86\x01\n" +
+	"\x16ListPreferenceResponse\x120\n" +
 	"\n" +
-	"preference\x18\x01 \x03(\v2\x1b.user_preference.PreferenceR\n" +
+	"preference\x18\x01 \x03(\v2\x10.user.PreferenceR\n" +
 	"preference\x12:\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x1a.common.PaginationResponseR\n" +
-	"pagination\"\xab\x01\n" +
+	"pagination\"\xa0\x01\n" +
 	"\x17CreatePreferenceRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12;\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x120\n" +
 	"\n" +
-	"preference\x18\x02 \x01(\v2\x1b.user_preference.PreferenceR\n" +
+	"preference\x18\x02 \x01(\v2\x10.user.PreferenceR\n" +
 	"preference\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"W\n" +
-	"\x18CreatePreferenceResponse\x12;\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"L\n" +
+	"\x18CreatePreferenceResponse\x120\n" +
 	"\n" +
-	"preference\x18\x01 \x01(\v2\x1b.user_preference.PreferenceR\n" +
-	"preference\"\xab\x01\n" +
+	"preference\x18\x01 \x01(\v2\x10.user.PreferenceR\n" +
+	"preference\"\xa0\x01\n" +
 	"\x17UpdatePreferenceRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12;\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x120\n" +
 	"\n" +
-	"preference\x18\x02 \x01(\v2\x1b.user_preference.PreferenceR\n" +
+	"preference\x18\x02 \x01(\v2\x10.user.PreferenceR\n" +
 	"preference\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"k\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"`\n" +
 	"\x18UpdatePreferenceResponse\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12;\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x120\n" +
 	"\n" +
-	"preference\x18\x02 \x01(\v2\x1b.user_preference.PreferenceR\n" +
+	"preference\x18\x02 \x01(\v2\x10.user.PreferenceR\n" +
 	"preference\"n\n" +
 	"\x17DeletePreferenceRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"4\n" +
 	"\x18DeletePreferenceResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\x95\x04\n" +
-	"\x15UserPreferenceService\x12^\n" +
-	"\rGetPreference\x12%.user_preference.GetPreferenceRequest\x1a&.user_preference.GetPreferenceResponse\x12a\n" +
-	"\x0eListPreference\x12&.user_preference.ListPreferenceRequest\x1a'.user_preference.ListPreferenceResponse\x12g\n" +
-	"\x10CreatePreference\x12(.user_preference.CreatePreferenceRequest\x1a).user_preference.CreatePreferenceResponse\x12g\n" +
-	"\x10UpdatePreference\x12(.user_preference.UpdatePreferenceRequest\x1a).user_preference.UpdatePreferenceResponse\x12g\n" +
-	"\x10DeletePreference\x12(.user_preference.DeletePreferenceRequest\x1a).user_preference.DeletePreferenceResponseB8Z6github.com/rdev-org/proto-contracts/pb/user_preferenceb\x06proto3"
+	"\amessage\x18\x01 \x01(\tR\amessageB-Z+github.com/rdev-org/proto-contracts/pb/userb\x06proto3"
 
 var (
 	file_user_preference_proto_rawDescOnce sync.Once
@@ -718,17 +712,17 @@ func file_user_preference_proto_rawDescGZIP() []byte {
 
 var file_user_preference_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_user_preference_proto_goTypes = []any{
-	(*Preference)(nil),                // 0: user_preference.Preference
-	(*GetPreferenceRequest)(nil),      // 1: user_preference.GetPreferenceRequest
-	(*GetPreferenceResponse)(nil),     // 2: user_preference.GetPreferenceResponse
-	(*ListPreferenceRequest)(nil),     // 3: user_preference.ListPreferenceRequest
-	(*ListPreferenceResponse)(nil),    // 4: user_preference.ListPreferenceResponse
-	(*CreatePreferenceRequest)(nil),   // 5: user_preference.CreatePreferenceRequest
-	(*CreatePreferenceResponse)(nil),  // 6: user_preference.CreatePreferenceResponse
-	(*UpdatePreferenceRequest)(nil),   // 7: user_preference.UpdatePreferenceRequest
-	(*UpdatePreferenceResponse)(nil),  // 8: user_preference.UpdatePreferenceResponse
-	(*DeletePreferenceRequest)(nil),   // 9: user_preference.DeletePreferenceRequest
-	(*DeletePreferenceResponse)(nil),  // 10: user_preference.DeletePreferenceResponse
+	(*Preference)(nil),                // 0: user.Preference
+	(*GetPreferenceRequest)(nil),      // 1: user.GetPreferenceRequest
+	(*GetPreferenceResponse)(nil),     // 2: user.GetPreferenceResponse
+	(*ListPreferenceRequest)(nil),     // 3: user.ListPreferenceRequest
+	(*ListPreferenceResponse)(nil),    // 4: user.ListPreferenceResponse
+	(*CreatePreferenceRequest)(nil),   // 5: user.CreatePreferenceRequest
+	(*CreatePreferenceResponse)(nil),  // 6: user.CreatePreferenceResponse
+	(*UpdatePreferenceRequest)(nil),   // 7: user.UpdatePreferenceRequest
+	(*UpdatePreferenceResponse)(nil),  // 8: user.UpdatePreferenceResponse
+	(*DeletePreferenceRequest)(nil),   // 9: user.DeletePreferenceRequest
+	(*DeletePreferenceResponse)(nil),  // 10: user.DeletePreferenceResponse
 	(*common.Metadata)(nil),           // 11: common.Metadata
 	(*structpb.Struct)(nil),           // 12: google.protobuf.Struct
 	(*common.RequestContext)(nil),     // 13: common.RequestContext
@@ -737,34 +731,24 @@ var file_user_preference_proto_goTypes = []any{
 	(*common.PaginationResponse)(nil), // 16: common.PaginationResponse
 }
 var file_user_preference_proto_depIdxs = []int32{
-	11, // 0: user_preference.Preference.meta:type_name -> common.Metadata
-	12, // 1: user_preference.Preference.settings:type_name -> google.protobuf.Struct
-	13, // 2: user_preference.GetPreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 3: user_preference.GetPreferenceResponse.preference:type_name -> user_preference.Preference
-	14, // 4: user_preference.ListPreferenceRequest.filter:type_name -> common.Filter
-	15, // 5: user_preference.ListPreferenceRequest.pagination:type_name -> common.PaginationRequest
-	13, // 6: user_preference.ListPreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 7: user_preference.ListPreferenceResponse.preference:type_name -> user_preference.Preference
-	16, // 8: user_preference.ListPreferenceResponse.pagination:type_name -> common.PaginationResponse
-	0,  // 9: user_preference.CreatePreferenceRequest.preference:type_name -> user_preference.Preference
-	13, // 10: user_preference.CreatePreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 11: user_preference.CreatePreferenceResponse.preference:type_name -> user_preference.Preference
-	0,  // 12: user_preference.UpdatePreferenceRequest.preference:type_name -> user_preference.Preference
-	13, // 13: user_preference.UpdatePreferenceRequest.request_context:type_name -> common.RequestContext
-	0,  // 14: user_preference.UpdatePreferenceResponse.preference:type_name -> user_preference.Preference
-	13, // 15: user_preference.DeletePreferenceRequest.request_context:type_name -> common.RequestContext
-	1,  // 16: user_preference.UserPreferenceService.GetPreference:input_type -> user_preference.GetPreferenceRequest
-	3,  // 17: user_preference.UserPreferenceService.ListPreference:input_type -> user_preference.ListPreferenceRequest
-	5,  // 18: user_preference.UserPreferenceService.CreatePreference:input_type -> user_preference.CreatePreferenceRequest
-	7,  // 19: user_preference.UserPreferenceService.UpdatePreference:input_type -> user_preference.UpdatePreferenceRequest
-	9,  // 20: user_preference.UserPreferenceService.DeletePreference:input_type -> user_preference.DeletePreferenceRequest
-	2,  // 21: user_preference.UserPreferenceService.GetPreference:output_type -> user_preference.GetPreferenceResponse
-	4,  // 22: user_preference.UserPreferenceService.ListPreference:output_type -> user_preference.ListPreferenceResponse
-	6,  // 23: user_preference.UserPreferenceService.CreatePreference:output_type -> user_preference.CreatePreferenceResponse
-	8,  // 24: user_preference.UserPreferenceService.UpdatePreference:output_type -> user_preference.UpdatePreferenceResponse
-	10, // 25: user_preference.UserPreferenceService.DeletePreference:output_type -> user_preference.DeletePreferenceResponse
-	21, // [21:26] is the sub-list for method output_type
-	16, // [16:21] is the sub-list for method input_type
+	11, // 0: user.Preference.meta:type_name -> common.Metadata
+	12, // 1: user.Preference.settings:type_name -> google.protobuf.Struct
+	13, // 2: user.GetPreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 3: user.GetPreferenceResponse.preference:type_name -> user.Preference
+	14, // 4: user.ListPreferenceRequest.filter:type_name -> common.Filter
+	15, // 5: user.ListPreferenceRequest.pagination:type_name -> common.PaginationRequest
+	13, // 6: user.ListPreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 7: user.ListPreferenceResponse.preference:type_name -> user.Preference
+	16, // 8: user.ListPreferenceResponse.pagination:type_name -> common.PaginationResponse
+	0,  // 9: user.CreatePreferenceRequest.preference:type_name -> user.Preference
+	13, // 10: user.CreatePreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 11: user.CreatePreferenceResponse.preference:type_name -> user.Preference
+	0,  // 12: user.UpdatePreferenceRequest.preference:type_name -> user.Preference
+	13, // 13: user.UpdatePreferenceRequest.request_context:type_name -> common.RequestContext
+	0,  // 14: user.UpdatePreferenceResponse.preference:type_name -> user.Preference
+	13, // 15: user.DeletePreferenceRequest.request_context:type_name -> common.RequestContext
+	16, // [16:16] is the sub-list for method output_type
+	16, // [16:16] is the sub-list for method input_type
 	16, // [16:16] is the sub-list for extension type_name
 	16, // [16:16] is the sub-list for extension extendee
 	0,  // [0:16] is the sub-list for field type_name
@@ -783,7 +767,7 @@ func file_user_preference_proto_init() {
 			NumEnums:      0,
 			NumMessages:   11,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
 		GoTypes:           file_user_preference_proto_goTypes,
 		DependencyIndexes: file_user_preference_proto_depIdxs,

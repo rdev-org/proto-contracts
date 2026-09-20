@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        v7.36.1
-// source: user_profile.proto
+// source: user/profile.proto
 
-package user_profile
+package user
 
 import (
 	common "github.com/rdev-org/proto-contracts/pb/common"
@@ -33,6 +33,8 @@ type Profile struct {
 	DateOfBirth   string                 `protobuf:"bytes,7,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
 	Gender        string                 `protobuf:"bytes,8,opt,name=gender,proto3" json:"gender,omitempty"`
 	Avatar        string                 `protobuf:"bytes,9,opt,name=avatar,proto3" json:"avatar,omitempty"`
+	Address       []*Address             `protobuf:"bytes,10,rep,name=address,proto3" json:"address,omitempty"`
+	Preference    *Preference            `protobuf:"bytes,11,opt,name=preference,proto3" json:"preference,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -128,6 +130,20 @@ func (x *Profile) GetAvatar() string {
 		return x.Avatar
 	}
 	return ""
+}
+
+func (x *Profile) GetAddress() []*Address {
+	if x != nil {
+		return x.Address
+	}
+	return nil
+}
+
+func (x *Profile) GetPreference() *Preference {
+	if x != nil {
+		return x.Preference
+	}
+	return nil
 }
 
 type GetProfileRequest struct {
@@ -654,7 +670,7 @@ var File_user_profile_proto protoreflect.FileDescriptor
 
 const file_user_profile_proto_rawDesc = "" +
 	"\n" +
-	"\x12user_profile.proto\x12\fuser_profile\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\"\x9e\x02\n" +
+	"\x12user/profile.proto\x12\x04user\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\x1a\x12user/address.proto\x1a\x15user/preference.proto\"\xf9\x02\n" +
 	"\aProfile\x12$\n" +
 	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x1d\n" +
@@ -666,48 +682,46 @@ const file_user_profile_proto_rawDesc = "" +
 	"\rmobile_number\x18\x06 \x01(\tR\fmobileNumber\x12\"\n" +
 	"\rdate_of_birth\x18\a \x01(\tR\vdateOfBirth\x12\x16\n" +
 	"\x06gender\x18\b \x01(\tR\x06gender\x12\x16\n" +
-	"\x06avatar\x18\t \x01(\tR\x06avatar\"h\n" +
+	"\x06avatar\x18\t \x01(\tR\x06avatar\x12'\n" +
+	"\aaddress\x18\n" +
+	" \x03(\v2\r.user.AddressR\aaddress\x120\n" +
+	"\n" +
+	"preference\x18\v \x01(\v2\x10.user.PreferenceR\n" +
+	"preference\"h\n" +
 	"\x11GetProfileRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
-	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"E\n" +
-	"\x12GetProfileResponse\x12/\n" +
-	"\aprofile\x18\x01 \x01(\v2\x15.user_profile.ProfileR\aprofile\"\xb8\x01\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"=\n" +
+	"\x12GetProfileResponse\x12'\n" +
+	"\aprofile\x18\x01 \x01(\v2\r.user.ProfileR\aprofile\"\xb8\x01\n" +
 	"\x12ListProfileRequest\x12&\n" +
 	"\x06filter\x18\x01 \x01(\v2\x0e.common.FilterR\x06filter\x129\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x19.common.PaginationRequestR\n" +
 	"pagination\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x82\x01\n" +
-	"\x13ListProfileResponse\x12/\n" +
-	"\aprofile\x18\x01 \x03(\v2\x15.user_profile.ProfileR\aprofile\x12:\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"z\n" +
+	"\x13ListProfileResponse\x12'\n" +
+	"\aprofile\x18\x01 \x03(\v2\r.user.ProfileR\aprofile\x12:\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x1a.common.PaginationResponseR\n" +
-	"pagination\"\x9c\x01\n" +
+	"pagination\"\x94\x01\n" +
 	"\x14CreateProfileRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aprofile\x18\x02 \x01(\v2\x15.user_profile.ProfileR\aprofile\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"H\n" +
-	"\x15CreateProfileResponse\x12/\n" +
-	"\aprofile\x18\x01 \x01(\v2\x15.user_profile.ProfileR\aprofile\"\x9c\x01\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aprofile\x18\x02 \x01(\v2\r.user.ProfileR\aprofile\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"@\n" +
+	"\x15CreateProfileResponse\x12'\n" +
+	"\aprofile\x18\x01 \x01(\v2\r.user.ProfileR\aprofile\"\x94\x01\n" +
 	"\x14UpdateProfileRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aprofile\x18\x02 \x01(\v2\x15.user_profile.ProfileR\aprofile\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\\\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aprofile\x18\x02 \x01(\v2\r.user.ProfileR\aprofile\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"T\n" +
 	"\x15UpdateProfileResponse\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aprofile\x18\x02 \x01(\v2\x15.user_profile.ProfileR\aprofile\"k\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aprofile\x18\x02 \x01(\v2\r.user.ProfileR\aprofile\"k\n" +
 	"\x14DeleteProfileRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"1\n" +
 	"\x15DeleteProfileResponse\x12\x18\n" +
-	"\amessage\x18\x01 \x01(\tR\amessage2\xc7\x03\n" +
-	"\x12UserProfileService\x12O\n" +
-	"\n" +
-	"GetProfile\x12\x1f.user_profile.GetProfileRequest\x1a .user_profile.GetProfileResponse\x12R\n" +
-	"\vListProfile\x12 .user_profile.ListProfileRequest\x1a!.user_profile.ListProfileResponse\x12X\n" +
-	"\rCreateProfile\x12\".user_profile.CreateProfileRequest\x1a#.user_profile.CreateProfileResponse\x12X\n" +
-	"\rUpdateProfile\x12\".user_profile.UpdateProfileRequest\x1a#.user_profile.UpdateProfileResponse\x12X\n" +
-	"\rDeleteProfile\x12\".user_profile.DeleteProfileRequest\x1a#.user_profile.DeleteProfileResponseB5Z3github.com/rdev-org/proto-contracts/pb/user_profileb\x06proto3"
+	"\amessage\x18\x01 \x01(\tR\amessageB-Z+github.com/rdev-org/proto-contracts/pb/userb\x06proto3"
 
 var (
 	file_user_profile_proto_rawDescOnce sync.Once
@@ -723,54 +737,48 @@ func file_user_profile_proto_rawDescGZIP() []byte {
 
 var file_user_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_user_profile_proto_goTypes = []any{
-	(*Profile)(nil),                   // 0: user_profile.Profile
-	(*GetProfileRequest)(nil),         // 1: user_profile.GetProfileRequest
-	(*GetProfileResponse)(nil),        // 2: user_profile.GetProfileResponse
-	(*ListProfileRequest)(nil),        // 3: user_profile.ListProfileRequest
-	(*ListProfileResponse)(nil),       // 4: user_profile.ListProfileResponse
-	(*CreateProfileRequest)(nil),      // 5: user_profile.CreateProfileRequest
-	(*CreateProfileResponse)(nil),     // 6: user_profile.CreateProfileResponse
-	(*UpdateProfileRequest)(nil),      // 7: user_profile.UpdateProfileRequest
-	(*UpdateProfileResponse)(nil),     // 8: user_profile.UpdateProfileResponse
-	(*DeleteProfileRequest)(nil),      // 9: user_profile.DeleteProfileRequest
-	(*DeleteProfileResponse)(nil),     // 10: user_profile.DeleteProfileResponse
+	(*Profile)(nil),                   // 0: user.Profile
+	(*GetProfileRequest)(nil),         // 1: user.GetProfileRequest
+	(*GetProfileResponse)(nil),        // 2: user.GetProfileResponse
+	(*ListProfileRequest)(nil),        // 3: user.ListProfileRequest
+	(*ListProfileResponse)(nil),       // 4: user.ListProfileResponse
+	(*CreateProfileRequest)(nil),      // 5: user.CreateProfileRequest
+	(*CreateProfileResponse)(nil),     // 6: user.CreateProfileResponse
+	(*UpdateProfileRequest)(nil),      // 7: user.UpdateProfileRequest
+	(*UpdateProfileResponse)(nil),     // 8: user.UpdateProfileResponse
+	(*DeleteProfileRequest)(nil),      // 9: user.DeleteProfileRequest
+	(*DeleteProfileResponse)(nil),     // 10: user.DeleteProfileResponse
 	(*common.Metadata)(nil),           // 11: common.Metadata
-	(*common.RequestContext)(nil),     // 12: common.RequestContext
-	(*common.Filter)(nil),             // 13: common.Filter
-	(*common.PaginationRequest)(nil),  // 14: common.PaginationRequest
-	(*common.PaginationResponse)(nil), // 15: common.PaginationResponse
+	(*Address)(nil),                   // 12: user.Address
+	(*Preference)(nil),                // 13: user.Preference
+	(*common.RequestContext)(nil),     // 14: common.RequestContext
+	(*common.Filter)(nil),             // 15: common.Filter
+	(*common.PaginationRequest)(nil),  // 16: common.PaginationRequest
+	(*common.PaginationResponse)(nil), // 17: common.PaginationResponse
 }
 var file_user_profile_proto_depIdxs = []int32{
-	11, // 0: user_profile.Profile.meta:type_name -> common.Metadata
-	12, // 1: user_profile.GetProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 2: user_profile.GetProfileResponse.profile:type_name -> user_profile.Profile
-	13, // 3: user_profile.ListProfileRequest.filter:type_name -> common.Filter
-	14, // 4: user_profile.ListProfileRequest.pagination:type_name -> common.PaginationRequest
-	12, // 5: user_profile.ListProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 6: user_profile.ListProfileResponse.profile:type_name -> user_profile.Profile
-	15, // 7: user_profile.ListProfileResponse.pagination:type_name -> common.PaginationResponse
-	0,  // 8: user_profile.CreateProfileRequest.profile:type_name -> user_profile.Profile
-	12, // 9: user_profile.CreateProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 10: user_profile.CreateProfileResponse.profile:type_name -> user_profile.Profile
-	0,  // 11: user_profile.UpdateProfileRequest.profile:type_name -> user_profile.Profile
-	12, // 12: user_profile.UpdateProfileRequest.request_context:type_name -> common.RequestContext
-	0,  // 13: user_profile.UpdateProfileResponse.profile:type_name -> user_profile.Profile
-	12, // 14: user_profile.DeleteProfileRequest.request_context:type_name -> common.RequestContext
-	1,  // 15: user_profile.UserProfileService.GetProfile:input_type -> user_profile.GetProfileRequest
-	3,  // 16: user_profile.UserProfileService.ListProfile:input_type -> user_profile.ListProfileRequest
-	5,  // 17: user_profile.UserProfileService.CreateProfile:input_type -> user_profile.CreateProfileRequest
-	7,  // 18: user_profile.UserProfileService.UpdateProfile:input_type -> user_profile.UpdateProfileRequest
-	9,  // 19: user_profile.UserProfileService.DeleteProfile:input_type -> user_profile.DeleteProfileRequest
-	2,  // 20: user_profile.UserProfileService.GetProfile:output_type -> user_profile.GetProfileResponse
-	4,  // 21: user_profile.UserProfileService.ListProfile:output_type -> user_profile.ListProfileResponse
-	6,  // 22: user_profile.UserProfileService.CreateProfile:output_type -> user_profile.CreateProfileResponse
-	8,  // 23: user_profile.UserProfileService.UpdateProfile:output_type -> user_profile.UpdateProfileResponse
-	10, // 24: user_profile.UserProfileService.DeleteProfile:output_type -> user_profile.DeleteProfileResponse
-	20, // [20:25] is the sub-list for method output_type
-	15, // [15:20] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	11, // 0: user.Profile.meta:type_name -> common.Metadata
+	12, // 1: user.Profile.address:type_name -> user.Address
+	13, // 2: user.Profile.preference:type_name -> user.Preference
+	14, // 3: user.GetProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 4: user.GetProfileResponse.profile:type_name -> user.Profile
+	15, // 5: user.ListProfileRequest.filter:type_name -> common.Filter
+	16, // 6: user.ListProfileRequest.pagination:type_name -> common.PaginationRequest
+	14, // 7: user.ListProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 8: user.ListProfileResponse.profile:type_name -> user.Profile
+	17, // 9: user.ListProfileResponse.pagination:type_name -> common.PaginationResponse
+	0,  // 10: user.CreateProfileRequest.profile:type_name -> user.Profile
+	14, // 11: user.CreateProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 12: user.CreateProfileResponse.profile:type_name -> user.Profile
+	0,  // 13: user.UpdateProfileRequest.profile:type_name -> user.Profile
+	14, // 14: user.UpdateProfileRequest.request_context:type_name -> common.RequestContext
+	0,  // 15: user.UpdateProfileResponse.profile:type_name -> user.Profile
+	14, // 16: user.DeleteProfileRequest.request_context:type_name -> common.RequestContext
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_user_profile_proto_init() }
@@ -778,6 +786,8 @@ func file_user_profile_proto_init() {
 	if File_user_profile_proto != nil {
 		return
 	}
+	file_user_address_proto_init()
+	file_user_preference_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
@@ -786,7 +796,7 @@ func file_user_profile_proto_init() {
 			NumEnums:      0,
 			NumMessages:   11,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
 		GoTypes:           file_user_profile_proto_goTypes,
 		DependencyIndexes: file_user_profile_proto_depIdxs,

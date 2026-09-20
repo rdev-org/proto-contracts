@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package audit_event;
+
+option go_package = "github.com/rdev-org/proto-contracts/pb/audit_event";
+
+import "common/meta.proto";
+import "common/filter.proto";
+import "common/pagination.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+service AuditEventService {
+  rpc RecordAuditEvent(RecordAuditEventRequest) returns (RecordAuditEventResponse);
+  rpc GetAuditEvent(GetAuditEventRequest) returns (GetAuditEventResponse);
+  rpc ListAuditEvent(ListAuditEventRequest) returns (ListAuditEventResponse);
+}
+
+message AuditEvent {
+  common.Metadata           meta               = 1;
+  string                    application_id     = 2;
+  string                    event_type         = 3;
+  string                    action_type        = 4;
+  google.protobuf.Timestamp recorded_at        = 5;
+  AuditEventDetail          audit_event_detail = 6;
+}
+
+message AuditEventDetail {
+  google.protobuf.Struct request_payload  = 1;
+  google.protobuf.Struct response_payload = 2;
+  string                 error_message    = 3;
+  string                 stack_trace      = 4;
+}
+
+message RecordAuditEventRequest {
+  AuditEvent            audit_event     = 1;
+  common.RequestContext request_context = 2;
+}
+
+message RecordAuditEventResponse {
+  AuditEvent audit_event = 1;
+}
+
+message GetAuditEventRequest {
+  string                uuid            = 1;
+  common.RequestContext request_context = 2;
+}
+
+message GetAuditEventResponse {
+  AuditEvent audit_event = 1;
+}
+
+message ListAuditEventRequest {
+  common.Filter            filter          = 1;
+  common.PaginationRequest pagination      = 2;
+  common.RequestContext    request_context = 3;
+}
+
+message ListAuditEventResponse {
+  repeated AuditEvent       audit_event = 1;
+  common.PaginationResponse pagination  = 2;
+}

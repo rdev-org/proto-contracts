@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        v7.36.1
-// source: user_address.proto
+// source: user/address.proto
 
-package user_address
+package user
 
 import (
 	common "github.com/rdev-org/proto-contracts/pb/common"
@@ -790,7 +790,7 @@ var File_user_address_proto protoreflect.FileDescriptor
 
 const file_user_address_proto_rawDesc = "" +
 	"\n" +
-	"\x12user_address.proto\x12\fuser_address\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\"\xca\x02\n" +
+	"\x12user/address.proto\x12\x04user\x1a\x11common/meta.proto\x1a\x13common/filter.proto\x1a\x17common/pagination.proto\"\xca\x02\n" +
 	"\aAddress\x12$\n" +
 	"\x04meta\x18\x01 \x01(\v2\x10.common.MetadataR\x04meta\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12#\n" +
@@ -807,35 +807,35 @@ const file_user_address_proto_rawDesc = "" +
 	" \x01(\tR\vaddressType\"h\n" +
 	"\x11GetAddressRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
-	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"E\n" +
-	"\x12GetAddressResponse\x12/\n" +
-	"\aaddress\x18\x01 \x01(\v2\x15.user_address.AddressR\aaddress\"\xd1\x01\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"=\n" +
+	"\x12GetAddressResponse\x12'\n" +
+	"\aaddress\x18\x01 \x01(\v2\r.user.AddressR\aaddress\"\xd1\x01\n" +
 	"\x12ListAddressRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12&\n" +
 	"\x06filter\x18\x02 \x01(\v2\x0e.common.FilterR\x06filter\x129\n" +
 	"\n" +
 	"pagination\x18\x03 \x01(\v2\x19.common.PaginationRequestR\n" +
 	"pagination\x12?\n" +
-	"\x0frequest_context\x18\x04 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x82\x01\n" +
-	"\x13ListAddressResponse\x12/\n" +
-	"\aaddress\x18\x01 \x03(\v2\x15.user_address.AddressR\aaddress\x12:\n" +
+	"\x0frequest_context\x18\x04 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"z\n" +
+	"\x13ListAddressResponse\x12'\n" +
+	"\aaddress\x18\x01 \x03(\v2\r.user.AddressR\aaddress\x12:\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x1a.common.PaginationResponseR\n" +
-	"pagination\"\x9c\x01\n" +
+	"pagination\"\x94\x01\n" +
 	"\x14CreateAddressRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\\\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aaddress\x18\x02 \x01(\v2\r.user.AddressR\aaddress\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"T\n" +
 	"\x15CreateAddressResponse\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\"\x9c\x01\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aaddress\x18\x02 \x01(\v2\r.user.AddressR\aaddress\"\x94\x01\n" +
 	"\x14UpdateAddressRequest\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\\\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aaddress\x18\x02 \x01(\v2\r.user.AddressR\aaddress\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"T\n" +
 	"\x15UpdateAddressResponse\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress\"k\n" +
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aaddress\x18\x02 \x01(\v2\r.user.AddressR\aaddress\"k\n" +
 	"\x14DeleteAddressRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"1\n" +
@@ -844,18 +844,10 @@ const file_user_address_proto_rawDesc = "" +
 	"\x15DefaultAddressRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"]\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"U\n" +
 	"\x16DefaultAddressResponse\x12\x12\n" +
-	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12/\n" +
-	"\aaddress\x18\x02 \x01(\v2\x15.user_address.AddressR\aaddress2\xa4\x04\n" +
-	"\x12UserAddressService\x12O\n" +
-	"\n" +
-	"GetAddress\x12\x1f.user_address.GetAddressRequest\x1a .user_address.GetAddressResponse\x12R\n" +
-	"\vListAddress\x12 .user_address.ListAddressRequest\x1a!.user_address.ListAddressResponse\x12X\n" +
-	"\rCreateAddress\x12\".user_address.CreateAddressRequest\x1a#.user_address.CreateAddressResponse\x12X\n" +
-	"\rUpdateAddress\x12\".user_address.UpdateAddressRequest\x1a#.user_address.UpdateAddressResponse\x12X\n" +
-	"\rDeleteAddress\x12\".user_address.DeleteAddressRequest\x1a#.user_address.DeleteAddressResponse\x12[\n" +
-	"\x0eDefaultAddress\x12#.user_address.DefaultAddressRequest\x1a$.user_address.DefaultAddressResponseB5Z3github.com/rdev-org/proto-contracts/pb/user_addressb\x06proto3"
+	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x12'\n" +
+	"\aaddress\x18\x02 \x01(\v2\r.user.AddressR\aaddressB-Z+github.com/rdev-org/proto-contracts/pb/userb\x06proto3"
 
 var (
 	file_user_address_proto_rawDescOnce sync.Once
@@ -871,19 +863,19 @@ func file_user_address_proto_rawDescGZIP() []byte {
 
 var file_user_address_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_user_address_proto_goTypes = []any{
-	(*Address)(nil),                   // 0: user_address.Address
-	(*GetAddressRequest)(nil),         // 1: user_address.GetAddressRequest
-	(*GetAddressResponse)(nil),        // 2: user_address.GetAddressResponse
-	(*ListAddressRequest)(nil),        // 3: user_address.ListAddressRequest
-	(*ListAddressResponse)(nil),       // 4: user_address.ListAddressResponse
-	(*CreateAddressRequest)(nil),      // 5: user_address.CreateAddressRequest
-	(*CreateAddressResponse)(nil),     // 6: user_address.CreateAddressResponse
-	(*UpdateAddressRequest)(nil),      // 7: user_address.UpdateAddressRequest
-	(*UpdateAddressResponse)(nil),     // 8: user_address.UpdateAddressResponse
-	(*DeleteAddressRequest)(nil),      // 9: user_address.DeleteAddressRequest
-	(*DeleteAddressResponse)(nil),     // 10: user_address.DeleteAddressResponse
-	(*DefaultAddressRequest)(nil),     // 11: user_address.DefaultAddressRequest
-	(*DefaultAddressResponse)(nil),    // 12: user_address.DefaultAddressResponse
+	(*Address)(nil),                   // 0: user.Address
+	(*GetAddressRequest)(nil),         // 1: user.GetAddressRequest
+	(*GetAddressResponse)(nil),        // 2: user.GetAddressResponse
+	(*ListAddressRequest)(nil),        // 3: user.ListAddressRequest
+	(*ListAddressResponse)(nil),       // 4: user.ListAddressResponse
+	(*CreateAddressRequest)(nil),      // 5: user.CreateAddressRequest
+	(*CreateAddressResponse)(nil),     // 6: user.CreateAddressResponse
+	(*UpdateAddressRequest)(nil),      // 7: user.UpdateAddressRequest
+	(*UpdateAddressResponse)(nil),     // 8: user.UpdateAddressResponse
+	(*DeleteAddressRequest)(nil),      // 9: user.DeleteAddressRequest
+	(*DeleteAddressResponse)(nil),     // 10: user.DeleteAddressResponse
+	(*DefaultAddressRequest)(nil),     // 11: user.DefaultAddressRequest
+	(*DefaultAddressResponse)(nil),    // 12: user.DefaultAddressResponse
 	(*common.Metadata)(nil),           // 13: common.Metadata
 	(*common.RequestContext)(nil),     // 14: common.RequestContext
 	(*common.Filter)(nil),             // 15: common.Filter
@@ -891,37 +883,25 @@ var file_user_address_proto_goTypes = []any{
 	(*common.PaginationResponse)(nil), // 17: common.PaginationResponse
 }
 var file_user_address_proto_depIdxs = []int32{
-	13, // 0: user_address.Address.meta:type_name -> common.Metadata
-	14, // 1: user_address.GetAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 2: user_address.GetAddressResponse.address:type_name -> user_address.Address
-	15, // 3: user_address.ListAddressRequest.filter:type_name -> common.Filter
-	16, // 4: user_address.ListAddressRequest.pagination:type_name -> common.PaginationRequest
-	14, // 5: user_address.ListAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 6: user_address.ListAddressResponse.address:type_name -> user_address.Address
-	17, // 7: user_address.ListAddressResponse.pagination:type_name -> common.PaginationResponse
-	0,  // 8: user_address.CreateAddressRequest.address:type_name -> user_address.Address
-	14, // 9: user_address.CreateAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 10: user_address.CreateAddressResponse.address:type_name -> user_address.Address
-	0,  // 11: user_address.UpdateAddressRequest.address:type_name -> user_address.Address
-	14, // 12: user_address.UpdateAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 13: user_address.UpdateAddressResponse.address:type_name -> user_address.Address
-	14, // 14: user_address.DeleteAddressRequest.request_context:type_name -> common.RequestContext
-	14, // 15: user_address.DefaultAddressRequest.request_context:type_name -> common.RequestContext
-	0,  // 16: user_address.DefaultAddressResponse.address:type_name -> user_address.Address
-	1,  // 17: user_address.UserAddressService.GetAddress:input_type -> user_address.GetAddressRequest
-	3,  // 18: user_address.UserAddressService.ListAddress:input_type -> user_address.ListAddressRequest
-	5,  // 19: user_address.UserAddressService.CreateAddress:input_type -> user_address.CreateAddressRequest
-	7,  // 20: user_address.UserAddressService.UpdateAddress:input_type -> user_address.UpdateAddressRequest
-	9,  // 21: user_address.UserAddressService.DeleteAddress:input_type -> user_address.DeleteAddressRequest
-	11, // 22: user_address.UserAddressService.DefaultAddress:input_type -> user_address.DefaultAddressRequest
-	2,  // 23: user_address.UserAddressService.GetAddress:output_type -> user_address.GetAddressResponse
-	4,  // 24: user_address.UserAddressService.ListAddress:output_type -> user_address.ListAddressResponse
-	6,  // 25: user_address.UserAddressService.CreateAddress:output_type -> user_address.CreateAddressResponse
-	8,  // 26: user_address.UserAddressService.UpdateAddress:output_type -> user_address.UpdateAddressResponse
-	10, // 27: user_address.UserAddressService.DeleteAddress:output_type -> user_address.DeleteAddressResponse
-	12, // 28: user_address.UserAddressService.DefaultAddress:output_type -> user_address.DefaultAddressResponse
-	23, // [23:29] is the sub-list for method output_type
-	17, // [17:23] is the sub-list for method input_type
+	13, // 0: user.Address.meta:type_name -> common.Metadata
+	14, // 1: user.GetAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 2: user.GetAddressResponse.address:type_name -> user.Address
+	15, // 3: user.ListAddressRequest.filter:type_name -> common.Filter
+	16, // 4: user.ListAddressRequest.pagination:type_name -> common.PaginationRequest
+	14, // 5: user.ListAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 6: user.ListAddressResponse.address:type_name -> user.Address
+	17, // 7: user.ListAddressResponse.pagination:type_name -> common.PaginationResponse
+	0,  // 8: user.CreateAddressRequest.address:type_name -> user.Address
+	14, // 9: user.CreateAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 10: user.CreateAddressResponse.address:type_name -> user.Address
+	0,  // 11: user.UpdateAddressRequest.address:type_name -> user.Address
+	14, // 12: user.UpdateAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 13: user.UpdateAddressResponse.address:type_name -> user.Address
+	14, // 14: user.DeleteAddressRequest.request_context:type_name -> common.RequestContext
+	14, // 15: user.DefaultAddressRequest.request_context:type_name -> common.RequestContext
+	0,  // 16: user.DefaultAddressResponse.address:type_name -> user.Address
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
 	17, // [17:17] is the sub-list for extension type_name
 	17, // [17:17] is the sub-list for extension extendee
 	0,  // [0:17] is the sub-list for field type_name
@@ -940,7 +920,7 @@ func file_user_address_proto_init() {
 			NumEnums:      0,
 			NumMessages:   13,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
 		GoTypes:           file_user_address_proto_goTypes,
 		DependencyIndexes: file_user_address_proto_depIdxs,

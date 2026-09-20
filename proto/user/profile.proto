@@ -1,31 +1,28 @@
 syntax = "proto3";
 
-package user_profile;
+package user;
 
-option go_package = "github.com/rdev-org/proto-contracts/user_profile";
+option go_package = "github.com/rdev-org/proto-contracts/pb/user";
 
 import "common/meta.proto";
 import "common/filter.proto";
 import "common/pagination.proto";
 
-service UserProfileService {
-  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
-  rpc ListProfile(ListProfileRequest) returns (ListProfileResponse);
-  rpc CreateProfile(CreateProfileRequest) returns (CreateProfileResponse);
-  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
-  rpc DeleteProfile(DeleteProfileRequest) returns (DeleteProfileResponse);
-}
+import "user/address.proto";
+import "user/preference.proto";
 
 message Profile {
-  common.Metadata       meta            = 1;
-  string                user_id         = 2;
-  string                first_name      = 3;
-  string                middle_name     = 4;
-  string                last_name       = 5;
-  string                mobile_number   = 6;
-  string                date_of_birth   = 7;
-  string                gender          = 8;
-  string                avatar          = 9;
+  common.Metadata  meta          = 1;
+  string           user_id       = 2;
+  string           first_name    = 3;
+  string           middle_name   = 4;
+  string           last_name     = 5;
+  string           mobile_number = 6;
+  string           date_of_birth = 7;
+  string           gender        = 8;
+  string           avatar        = 9;
+  repeated Address address       = 10;
+  Preference       preference    = 11;
 }
 
 message GetProfileRequest {

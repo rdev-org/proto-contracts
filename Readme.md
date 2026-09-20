@@ -16,32 +16,20 @@ Generate Filter Proto
 protoc -I=./proto --go_out=./pb --go_opt=paths=source_relative --go-grpc_out=./pb --go-grpc_opt=paths=source_relative proto/common/pagination.proto
 ```
 
-Generate User Credentials Proto
+Generate User proto
 
 ```bash
-protoc -I=./proto --go_out=./pb/user_credential --go_opt=paths=source_relative --go-grpc_out=./pb/user_credential --go-grpc_opt=paths=source_relative proto/user_credential.proto
+protoc -I=./proto --go_out=./pb --go_opt=paths=source_relative --go-grpc_out=./pb --go-grpc_opt=paths=source_relative proto/user/*.proto
 ```
 
-Generate User Profile Proto
+Generate Auth Proto
 
 ```bash
-protoc -I=./proto --go_out=./pb/user_profile --go_opt=paths=source_relative --go-grpc_out=./pb/user_profile --go-grpc_opt=paths=source_relative proto/user_profile.proto
-```
-
-Generate User Address Proto
-
-```bash
-protoc -I=./proto --go_out=./pb/user_address --go_opt=paths=source_relative --go-grpc_out=./pb/user_address --go-grpc_opt=paths=source_relative proto/user_address.proto
-```
-
-Generate User Preference Proto
-
-```bash
-protoc -I=./proto --go_out=./pb/user_preference --go_opt=paths=source_relative --go-grpc_out=./pb/user_preference --go-grpc_opt=paths=source_relative proto/user_preference.proto
+protoc -I=./proto --go_out=./pb --go_opt=paths=source_relative --go-grpc_out=./pb --go-grpc_opt=paths=source_relative proto/auth/*.proto
 ```
 
 Generate Notification Email Proto
 
 ```bash
-protoc -I=./proto --go_out=./pb/notification_email --go_opt=paths=source_relative --go-grpc_out=./pb/notification_email --go-grpc_opt=paths=source_relative proto/notification_email.proto
+protoc -I=./proto --go_out=./pb --go_opt=paths=source_relative --go-grpc_out=./pb --go-grpc_opt=paths=source_relative proto/notification/*.proto
 ```

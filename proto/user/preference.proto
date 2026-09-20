@@ -1,21 +1,13 @@
 syntax = "proto3";
 
-package user_preference;
+package user;
 
-option go_package = "github.com/rdev-org/proto-contracts/pb/user_preference";
+option go_package = "github.com/rdev-org/proto-contracts/pb/user";
 
 import "common/meta.proto";
 import "common/filter.proto";
 import "common/pagination.proto";
 import "google/protobuf/struct.proto";
-
-service UserPreferenceService {
-  rpc GetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
-  rpc ListPreference(ListPreferenceRequest) returns (ListPreferenceResponse);
-  rpc CreatePreference(CreatePreferenceRequest) returns (CreatePreferenceResponse);
-  rpc UpdatePreference(UpdatePreferenceRequest) returns (UpdatePreferenceResponse);
-  rpc DeletePreference(DeletePreferenceRequest) returns (DeletePreferenceResponse);
-}
 
 message Preference {
   common.Metadata        meta         = 1;

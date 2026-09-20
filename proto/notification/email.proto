@@ -1,17 +1,11 @@
 syntax = "proto3";
 
-package notification_email;
+package notification;
 
-option go_package = "github.com/rdev-org/proto-contracts/pb/notification_email";
+option go_package = "github.com/rdev-org/proto-contracts/pb/notification";
 
 import "common/meta.proto";
 import "google/protobuf/timestamp.proto";
-
-service NotificationEmailService {
-  rpc SendEmail(SendEmailRequest) returns (SendEmailResponse);
-  rpc RegisterEmail(RegisterEmailRequest) returns (RegisterEmailResponse);
-  rpc ResetPasswordEmail(ResetPasswordEmailRequest) returns (ResetPasswordEmailResponse);
-}
 
 message Email {
   string recipient = 1;

@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package user_credential;
+package auth;
 
-option go_package = "github.com/rdev-org/proto-contracts/pb/user_credential";
+option go_package = "github.com/rdev-org/proto-contracts/pb/auth";
 
 import "common/meta.proto";
 import "google/protobuf/timestamp.proto";
 
-service UserCredentialService {
+service AuthenticationService {
   rpc Login(LoginRequest) returns (LoginResponse);
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc DeleteCredential(DeleteCredentialRequest) returns (DeleteCredentialResponse);

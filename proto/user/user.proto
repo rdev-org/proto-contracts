@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/rdev-org/proto-contracts/pb/user";
+
+import "user/profile.proto";
+import "user/address.proto";
+import "user/preference.proto";
+
+service UserService {
+  //Profile
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+  rpc ListProfile(ListProfileRequest) returns (ListProfileResponse);
+  rpc CreateProfile(CreateProfileRequest) returns (CreateProfileResponse);
+  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
+  rpc DeleteProfile(DeleteProfileRequest) returns (DeleteProfileResponse);
+
+  // Address
+  rpc GetAddress(GetAddressRequest) returns (GetAddressResponse);
+  rpc ListAddress(ListAddressRequest) returns (ListAddressResponse);
+  rpc CreateAddress(CreateAddressRequest) returns (CreateAddressResponse);
+  rpc UpdateAddress(UpdateAddressRequest) returns (UpdateAddressResponse);
+  rpc DeleteAddress(DeleteAddressRequest) returns (DeleteAddressResponse);
+  rpc DefaultAddress(DefaultAddressRequest) returns (DefaultAddressResponse);
+
+  // Preference
+  rpc GetPreference(GetPreferenceRequest) returns (GetPreferenceResponse);
+  rpc ListPreference(ListPreferenceRequest) returns (ListPreferenceResponse);
+  rpc CreatePreference(CreatePreferenceRequest) returns (CreatePreferenceResponse);
+  rpc UpdatePreference(UpdatePreferenceRequest) returns (UpdatePreferenceResponse);
+  rpc DeletePreference(DeletePreferenceRequest) returns (DeletePreferenceResponse);
+}

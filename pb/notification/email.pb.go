@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.12
 // 	protoc        v7.36.1
-// source: notification_email.proto
+// source: notification/email.proto
 
-package notification_email
+package notification
 
 import (
 	common "github.com/rdev-org/proto-contracts/pb/common"
@@ -415,35 +415,31 @@ var File_notification_email_proto protoreflect.FileDescriptor
 
 const file_notification_email_proto_rawDesc = "" +
 	"\n" +
-	"\x18notification_email.proto\x12\x12notification_email\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"S\n" +
+	"\x18notification/email.proto\x12\fnotification\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"S\n" +
 	"\x05Email\x12\x1c\n" +
 	"\trecipient\x18\x01 \x01(\tR\trecipient\x12\x18\n" +
 	"\asubject\x18\x02 \x01(\tR\asubject\x12\x12\n" +
-	"\x04body\x18\x03 \x01(\tR\x04body\"\x9c\x01\n" +
+	"\x04body\x18\x03 \x01(\tR\x04body\"\x96\x01\n" +
 	"\x10SendEmailRequest\x12\x16\n" +
-	"\x06module\x18\x01 \x01(\tR\x06module\x12/\n" +
-	"\x05email\x18\x02 \x01(\v2\x19.notification_email.EmailR\x05email\x12?\n" +
+	"\x06module\x18\x01 \x01(\tR\x06module\x12)\n" +
+	"\x05email\x18\x02 \x01(\v2\x13.notification.EmailR\x05email\x12?\n" +
 	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\xa3\x01\n" +
 	"\x11SendEmailResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
 	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x88\x01\n" +
-	"\x14RegisterEmailRequest\x12/\n" +
-	"\x05email\x18\x01 \x01(\v2\x19.notification_email.EmailR\x05email\x12?\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x82\x01\n" +
+	"\x14RegisterEmailRequest\x12)\n" +
+	"\x05email\x18\x01 \x01(\v2\x13.notification.EmailR\x05email\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"f\n" +
 	"\x15RegisterEmailResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
-	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\"\x8d\x01\n" +
-	"\x19ResetPasswordEmailRequest\x12/\n" +
-	"\x05email\x18\x01 \x01(\v2\x19.notification_email.EmailR\x05email\x12?\n" +
+	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\"\x87\x01\n" +
+	"\x19ResetPasswordEmailRequest\x12)\n" +
+	"\x05email\x18\x01 \x01(\v2\x13.notification.EmailR\x05email\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"k\n" +
 	"\x1aResetPasswordEmailResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
-	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt2\xcf\x02\n" +
-	"\x18NotificationEmailService\x12X\n" +
-	"\tSendEmail\x12$.notification_email.SendEmailRequest\x1a%.notification_email.SendEmailResponse\x12d\n" +
-	"\rRegisterEmail\x12(.notification_email.RegisterEmailRequest\x1a).notification_email.RegisterEmailResponse\x12s\n" +
-	"\x12ResetPasswordEmail\x12-.notification_email.ResetPasswordEmailRequest\x1a..notification_email.ResetPasswordEmailResponseB;Z9github.com/rdev-org/proto-contracts/pb/notification_emailb\x06proto3"
+	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAtB5Z3github.com/rdev-org/proto-contracts/pb/notificationb\x06proto3"
 
 var (
 	file_notification_email_proto_rawDescOnce sync.Once
@@ -459,35 +455,29 @@ func file_notification_email_proto_rawDescGZIP() []byte {
 
 var file_notification_email_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_notification_email_proto_goTypes = []any{
-	(*Email)(nil),                      // 0: notification_email.Email
-	(*SendEmailRequest)(nil),           // 1: notification_email.SendEmailRequest
-	(*SendEmailResponse)(nil),          // 2: notification_email.SendEmailResponse
-	(*RegisterEmailRequest)(nil),       // 3: notification_email.RegisterEmailRequest
-	(*RegisterEmailResponse)(nil),      // 4: notification_email.RegisterEmailResponse
-	(*ResetPasswordEmailRequest)(nil),  // 5: notification_email.ResetPasswordEmailRequest
-	(*ResetPasswordEmailResponse)(nil), // 6: notification_email.ResetPasswordEmailResponse
+	(*Email)(nil),                      // 0: notification.Email
+	(*SendEmailRequest)(nil),           // 1: notification.SendEmailRequest
+	(*SendEmailResponse)(nil),          // 2: notification.SendEmailResponse
+	(*RegisterEmailRequest)(nil),       // 3: notification.RegisterEmailRequest
+	(*RegisterEmailResponse)(nil),      // 4: notification.RegisterEmailResponse
+	(*ResetPasswordEmailRequest)(nil),  // 5: notification.ResetPasswordEmailRequest
+	(*ResetPasswordEmailResponse)(nil), // 6: notification.ResetPasswordEmailResponse
 	(*common.RequestContext)(nil),      // 7: common.RequestContext
 	(*timestamppb.Timestamp)(nil),      // 8: google.protobuf.Timestamp
 }
 var file_notification_email_proto_depIdxs = []int32{
-	0,  // 0: notification_email.SendEmailRequest.email:type_name -> notification_email.Email
-	7,  // 1: notification_email.SendEmailRequest.request_context:type_name -> common.RequestContext
-	8,  // 2: notification_email.SendEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
-	7,  // 3: notification_email.SendEmailResponse.request_context:type_name -> common.RequestContext
-	0,  // 4: notification_email.RegisterEmailRequest.email:type_name -> notification_email.Email
-	7,  // 5: notification_email.RegisterEmailRequest.request_context:type_name -> common.RequestContext
-	8,  // 6: notification_email.RegisterEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
-	0,  // 7: notification_email.ResetPasswordEmailRequest.email:type_name -> notification_email.Email
-	7,  // 8: notification_email.ResetPasswordEmailRequest.request_context:type_name -> common.RequestContext
-	8,  // 9: notification_email.ResetPasswordEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
-	1,  // 10: notification_email.NotificationEmailService.SendEmail:input_type -> notification_email.SendEmailRequest
-	3,  // 11: notification_email.NotificationEmailService.RegisterEmail:input_type -> notification_email.RegisterEmailRequest
-	5,  // 12: notification_email.NotificationEmailService.ResetPasswordEmail:input_type -> notification_email.ResetPasswordEmailRequest
-	2,  // 13: notification_email.NotificationEmailService.SendEmail:output_type -> notification_email.SendEmailResponse
-	4,  // 14: notification_email.NotificationEmailService.RegisterEmail:output_type -> notification_email.RegisterEmailResponse
-	6,  // 15: notification_email.NotificationEmailService.ResetPasswordEmail:output_type -> notification_email.ResetPasswordEmailResponse
-	13, // [13:16] is the sub-list for method output_type
-	10, // [10:13] is the sub-list for method input_type
+	0,  // 0: notification.SendEmailRequest.email:type_name -> notification.Email
+	7,  // 1: notification.SendEmailRequest.request_context:type_name -> common.RequestContext
+	8,  // 2: notification.SendEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	7,  // 3: notification.SendEmailResponse.request_context:type_name -> common.RequestContext
+	0,  // 4: notification.RegisterEmailRequest.email:type_name -> notification.Email
+	7,  // 5: notification.RegisterEmailRequest.request_context:type_name -> common.RequestContext
+	8,  // 6: notification.RegisterEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	0,  // 7: notification.ResetPasswordEmailRequest.email:type_name -> notification.Email
+	7,  // 8: notification.ResetPasswordEmailRequest.request_context:type_name -> common.RequestContext
+	8,  // 9: notification.ResetPasswordEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	10, // [10:10] is the sub-list for method output_type
+	10, // [10:10] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
 	10, // [10:10] is the sub-list for extension extendee
 	0,  // [0:10] is the sub-list for field type_name
@@ -506,7 +496,7 @@ func file_notification_email_proto_init() {
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   0,
 		},
 		GoTypes:           file_notification_email_proto_goTypes,
 		DependencyIndexes: file_notification_email_proto_depIdxs,
