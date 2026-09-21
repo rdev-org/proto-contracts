@@ -29,6 +29,7 @@ type Email struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Subject       string                 `protobuf:"bytes,3,opt,name=subject,proto3" json:"subject,omitempty"`
 	Body          string                 `protobuf:"bytes,4,opt,name=body,proto3" json:"body,omitempty"`
+	Meta          map[string]string      `protobuf:"bytes,5,rep,name=meta,proto3" json:"meta,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -89,6 +90,13 @@ func (x *Email) GetBody() string {
 		return x.Body
 	}
 	return ""
+}
+
+func (x *Email) GetMeta() map[string]string {
+	if x != nil {
+		return x.Meta
+	}
+	return nil
 }
 
 type SendEmailRequest struct {
@@ -152,12 +160,11 @@ func (x *SendEmailRequest) GetRequestContext() *common.RequestContext {
 }
 
 type SendEmailResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Message        string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	SentAt         *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=sent_at,json=sentAt,proto3" json:"sent_at,omitempty"`
-	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       string                 `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	SentAt        *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=sent_at,json=sentAt,proto3" json:"sent_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *SendEmailResponse) Reset() {
@@ -200,13 +207,6 @@ func (x *SendEmailResponse) GetMessage() string {
 func (x *SendEmailResponse) GetSentAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.SentAt
-	}
-	return nil
-}
-
-func (x *SendEmailResponse) GetRequestContext() *common.RequestContext {
-	if x != nil {
-		return x.RequestContext
 	}
 	return nil
 }
@@ -423,20 +423,23 @@ var File_notification_email_proto protoreflect.FileDescriptor
 
 const file_notification_email_proto_rawDesc = "" +
 	"\n" +
-	"\x18notification/email.proto\x12\fnotification\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"g\n" +
+	"\x18notification/email.proto\x12\fnotification\x1a\x11common/meta.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xd3\x01\n" +
 	"\x05Email\x12\x1c\n" +
 	"\trecipient\x18\x01 \x01(\tR\trecipient\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x18\n" +
 	"\asubject\x18\x03 \x01(\tR\asubject\x12\x12\n" +
-	"\x04body\x18\x04 \x01(\tR\x04body\"\x96\x01\n" +
+	"\x04body\x18\x04 \x01(\tR\x04body\x121\n" +
+	"\x04meta\x18\x05 \x03(\v2\x1d.notification.Email.MetaEntryR\x04meta\x1a7\n" +
+	"\tMetaEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x96\x01\n" +
 	"\x10SendEmailRequest\x12\x16\n" +
 	"\x06module\x18\x01 \x01(\tR\x06module\x12)\n" +
 	"\x05email\x18\x02 \x01(\v2\x13.notification.EmailR\x05email\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\xa3\x01\n" +
+	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"b\n" +
 	"\x11SendEmailResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\x123\n" +
-	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"\x82\x01\n" +
+	"\asent_at\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06sentAt\"\x82\x01\n" +
 	"\x14RegisterEmailRequest\x12)\n" +
 	"\x05email\x18\x01 \x01(\v2\x13.notification.EmailR\x05email\x12?\n" +
 	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\"f\n" +
@@ -462,7 +465,7 @@ func file_notification_email_proto_rawDescGZIP() []byte {
 	return file_notification_email_proto_rawDescData
 }
 
-var file_notification_email_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_notification_email_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_notification_email_proto_goTypes = []any{
 	(*Email)(nil),                      // 0: notification.Email
 	(*SendEmailRequest)(nil),           // 1: notification.SendEmailRequest
@@ -471,20 +474,21 @@ var file_notification_email_proto_goTypes = []any{
 	(*RegisterEmailResponse)(nil),      // 4: notification.RegisterEmailResponse
 	(*ResetPasswordEmailRequest)(nil),  // 5: notification.ResetPasswordEmailRequest
 	(*ResetPasswordEmailResponse)(nil), // 6: notification.ResetPasswordEmailResponse
-	(*common.RequestContext)(nil),      // 7: common.RequestContext
-	(*timestamppb.Timestamp)(nil),      // 8: google.protobuf.Timestamp
+	nil,                                // 7: notification.Email.MetaEntry
+	(*common.RequestContext)(nil),      // 8: common.RequestContext
+	(*timestamppb.Timestamp)(nil),      // 9: google.protobuf.Timestamp
 }
 var file_notification_email_proto_depIdxs = []int32{
-	0,  // 0: notification.SendEmailRequest.email:type_name -> notification.Email
-	7,  // 1: notification.SendEmailRequest.request_context:type_name -> common.RequestContext
-	8,  // 2: notification.SendEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
-	7,  // 3: notification.SendEmailResponse.request_context:type_name -> common.RequestContext
+	7,  // 0: notification.Email.meta:type_name -> notification.Email.MetaEntry
+	0,  // 1: notification.SendEmailRequest.email:type_name -> notification.Email
+	8,  // 2: notification.SendEmailRequest.request_context:type_name -> common.RequestContext
+	9,  // 3: notification.SendEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
 	0,  // 4: notification.RegisterEmailRequest.email:type_name -> notification.Email
-	7,  // 5: notification.RegisterEmailRequest.request_context:type_name -> common.RequestContext
-	8,  // 6: notification.RegisterEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	8,  // 5: notification.RegisterEmailRequest.request_context:type_name -> common.RequestContext
+	9,  // 6: notification.RegisterEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
 	0,  // 7: notification.ResetPasswordEmailRequest.email:type_name -> notification.Email
-	7,  // 8: notification.ResetPasswordEmailRequest.request_context:type_name -> common.RequestContext
-	8,  // 9: notification.ResetPasswordEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
+	8,  // 8: notification.ResetPasswordEmailRequest.request_context:type_name -> common.RequestContext
+	9,  // 9: notification.ResetPasswordEmailResponse.sent_at:type_name -> google.protobuf.Timestamp
 	10, // [10:10] is the sub-list for method output_type
 	10, // [10:10] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -503,7 +507,7 @@ func file_notification_email_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_notification_email_proto_rawDesc), len(file_notification_email_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

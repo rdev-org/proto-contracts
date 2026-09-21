@@ -356,7 +356,7 @@ func (x *ListProfileResponse) GetPagination() *common.PaginationResponse {
 
 type CreateProfilePayload struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Username      string                 `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
 	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
 	MiddleName    string                 `protobuf:"bytes,4,opt,name=middle_name,json=middleName,proto3" json:"middle_name,omitempty"`
@@ -365,7 +365,9 @@ type CreateProfilePayload struct {
 	DateOfBirth   string                 `protobuf:"bytes,7,opt,name=date_of_birth,json=dateOfBirth,proto3" json:"date_of_birth,omitempty"`
 	Gender        string                 `protobuf:"bytes,8,opt,name=gender,proto3" json:"gender,omitempty"`
 	Avatar        string                 `protobuf:"bytes,9,opt,name=avatar,proto3" json:"avatar,omitempty"`
-	Address       *Address               `protobuf:"bytes,10,opt,name=address,proto3" json:"address,omitempty"`
+	Password      string                 `protobuf:"bytes,10,opt,name=password,proto3" json:"password,omitempty"`
+	Token         string                 `protobuf:"bytes,11,opt,name=token,proto3" json:"token,omitempty"`
+	Address       *Address               `protobuf:"bytes,12,opt,name=address,proto3" json:"address,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -400,9 +402,9 @@ func (*CreateProfilePayload) Descriptor() ([]byte, []int) {
 	return file_user_profile_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *CreateProfilePayload) GetUserId() string {
+func (x *CreateProfilePayload) GetUsername() string {
 	if x != nil {
-		return x.UserId
+		return x.Username
 	}
 	return ""
 }
@@ -459,6 +461,20 @@ func (x *CreateProfilePayload) GetGender() string {
 func (x *CreateProfilePayload) GetAvatar() string {
 	if x != nil {
 		return x.Avatar
+	}
+	return ""
+}
+
+func (x *CreateProfilePayload) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *CreateProfilePayload) GetToken() string {
+	if x != nil {
+		return x.Token
 	}
 	return ""
 }
@@ -827,9 +843,9 @@ const file_user_profile_proto_rawDesc = "" +
 	"\aprofile\x18\x01 \x03(\v2\r.user.ProfileR\aprofile\x12:\n" +
 	"\n" +
 	"pagination\x18\x02 \x01(\v2\x1a.common.PaginationResponseR\n" +
-	"pagination\"\xc4\x02\n" +
-	"\x14CreateProfilePayload\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
+	"pagination\"\xf9\x02\n" +
+	"\x14CreateProfilePayload\x12\x1a\n" +
+	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x1d\n" +
 	"\n" +
 	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1f\n" +
@@ -839,9 +855,11 @@ const file_user_profile_proto_rawDesc = "" +
 	"\rmobile_number\x18\x06 \x01(\tR\fmobileNumber\x12\"\n" +
 	"\rdate_of_birth\x18\a \x01(\tR\vdateOfBirth\x12\x16\n" +
 	"\x06gender\x18\b \x01(\tR\x06gender\x12\x16\n" +
-	"\x06avatar\x18\t \x01(\tR\x06avatar\x12'\n" +
-	"\aaddress\x18\n" +
-	" \x01(\v2\r.user.AddressR\aaddress\"\xa1\x01\n" +
+	"\x06avatar\x18\t \x01(\tR\x06avatar\x12\x1a\n" +
+	"\bpassword\x18\n" +
+	" \x01(\tR\bpassword\x12\x14\n" +
+	"\x05token\x18\v \x01(\tR\x05token\x12'\n" +
+	"\aaddress\x18\f \x01(\v2\r.user.AddressR\aaddress\"\xa1\x01\n" +
 	"\x14CreateProfileRequest\x12\x12\n" +
 	"\x04uuid\x18\x01 \x01(\tR\x04uuid\x124\n" +
 	"\apayload\x18\x02 \x01(\v2\x1a.user.CreateProfilePayloadR\apayload\x12?\n" +

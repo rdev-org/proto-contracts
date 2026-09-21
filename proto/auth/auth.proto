@@ -31,8 +31,7 @@ message LoginResponse {
 
 message RegisterRequest {
   string                email           = 1;
-  string                password        = 2;
-  common.RequestContext request_context = 3;
+  common.RequestContext request_context = 2;
 }
 
 message RegisterResponse {

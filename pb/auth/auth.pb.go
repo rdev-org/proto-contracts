@@ -154,8 +154,7 @@ func (x *LoginResponse) GetUuid() string {
 type RegisterRequest struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	Email          string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password       string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	RequestContext *common.RequestContext `protobuf:"bytes,3,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
+	RequestContext *common.RequestContext `protobuf:"bytes,2,opt,name=request_context,json=requestContext,proto3" json:"request_context,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -193,13 +192,6 @@ func (*RegisterRequest) Descriptor() ([]byte, []int) {
 func (x *RegisterRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *RegisterRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
 	}
 	return ""
 }
@@ -692,11 +684,10 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\busername\x18\x01 \x01(\tR\busername\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x14\n" +
 	"\x05token\x18\x03 \x01(\tR\x05token\x12\x12\n" +
-	"\x04uuid\x18\x04 \x01(\tR\x04uuid\"\x84\x01\n" +
+	"\x04uuid\x18\x04 \x01(\tR\x04uuid\"h\n" +
 	"\x0fRegisterRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12?\n" +
-	"\x0frequest_context\x18\x03 \x01(\v2\x16.common.RequestContextR\x0erequestContext\",\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12?\n" +
+	"\x0frequest_context\x18\x02 \x01(\v2\x16.common.RequestContextR\x0erequestContext\",\n" +
 	"\x10RegisterResponse\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"n\n" +
 	"\x17DeleteCredentialRequest\x12\x12\n" +

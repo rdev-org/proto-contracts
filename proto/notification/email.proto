@@ -8,10 +8,11 @@ import "common/meta.proto";
 import "google/protobuf/timestamp.proto";
 
 message Email {
-  string recipient = 1;
-  string name      = 2;
-  string subject   = 3;
-  string body      = 4;
+  string              recipient = 1;
+  string              name      = 2;
+  string              subject   = 3;
+  string              body      = 4;
+  map<string, string> meta      = 5;
 }
 
 message SendEmailRequest {
@@ -21,9 +22,8 @@ message SendEmailRequest {
 }
 
 message SendEmailResponse {
-  string                    message         = 1;
-  google.protobuf.Timestamp sent_at         = 2;
-  common.RequestContext     request_context = 3;
+  string                    message = 1;
+  google.protobuf.Timestamp sent_at = 2;
 }
 
 message RegisterEmailRequest {
