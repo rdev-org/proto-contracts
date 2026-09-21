@@ -24,8 +24,9 @@ var File_user_user_proto protoreflect.FileDescriptor
 
 const file_user_user_proto_rawDesc = "" +
 	"\n" +
-	"\x0fuser/user.proto\x12\x04user\x1a\x12user/profile.proto\x1a\x12user/address.proto\x1a\x15user/preference.proto2\xb0\t\n" +
-	"\vUserService\x12?\n" +
+	"\x0fuser/user.proto\x12\x04user\x1a\x12user/profile.proto\x1a\x12user/address.proto\x1a\x15user/preference.proto2\xf0\t\n" +
+	"\vUserService\x12>\n" +
+	"\tMyProfile\x12\x17.user.GetProfileRequest\x1a\x18.user.GetProfileResponse\x12?\n" +
 	"\n" +
 	"GetProfile\x12\x17.user.GetProfileRequest\x1a\x18.user.GetProfileResponse\x12B\n" +
 	"\vListProfile\x12\x18.user.ListProfileRequest\x1a\x19.user.ListProfileResponse\x12H\n" +
@@ -80,40 +81,42 @@ var file_user_user_proto_goTypes = []any{
 	(*DeletePreferenceResponse)(nil), // 31: user.DeletePreferenceResponse
 }
 var file_user_user_proto_depIdxs = []int32{
-	0,  // 0: user.UserService.GetProfile:input_type -> user.GetProfileRequest
-	1,  // 1: user.UserService.ListProfile:input_type -> user.ListProfileRequest
-	2,  // 2: user.UserService.CreateProfile:input_type -> user.CreateProfileRequest
-	3,  // 3: user.UserService.UpdateProfile:input_type -> user.UpdateProfileRequest
-	4,  // 4: user.UserService.DeleteProfile:input_type -> user.DeleteProfileRequest
-	5,  // 5: user.UserService.GetAddress:input_type -> user.GetAddressRequest
-	6,  // 6: user.UserService.ListAddress:input_type -> user.ListAddressRequest
-	7,  // 7: user.UserService.CreateAddress:input_type -> user.CreateAddressRequest
-	8,  // 8: user.UserService.UpdateAddress:input_type -> user.UpdateAddressRequest
-	9,  // 9: user.UserService.DeleteAddress:input_type -> user.DeleteAddressRequest
-	10, // 10: user.UserService.DefaultAddress:input_type -> user.DefaultAddressRequest
-	11, // 11: user.UserService.GetPreference:input_type -> user.GetPreferenceRequest
-	12, // 12: user.UserService.ListPreference:input_type -> user.ListPreferenceRequest
-	13, // 13: user.UserService.CreatePreference:input_type -> user.CreatePreferenceRequest
-	14, // 14: user.UserService.UpdatePreference:input_type -> user.UpdatePreferenceRequest
-	15, // 15: user.UserService.DeletePreference:input_type -> user.DeletePreferenceRequest
-	16, // 16: user.UserService.GetProfile:output_type -> user.GetProfileResponse
-	17, // 17: user.UserService.ListProfile:output_type -> user.ListProfileResponse
-	18, // 18: user.UserService.CreateProfile:output_type -> user.CreateProfileResponse
-	19, // 19: user.UserService.UpdateProfile:output_type -> user.UpdateProfileResponse
-	20, // 20: user.UserService.DeleteProfile:output_type -> user.DeleteProfileResponse
-	21, // 21: user.UserService.GetAddress:output_type -> user.GetAddressResponse
-	22, // 22: user.UserService.ListAddress:output_type -> user.ListAddressResponse
-	23, // 23: user.UserService.CreateAddress:output_type -> user.CreateAddressResponse
-	24, // 24: user.UserService.UpdateAddress:output_type -> user.UpdateAddressResponse
-	25, // 25: user.UserService.DeleteAddress:output_type -> user.DeleteAddressResponse
-	26, // 26: user.UserService.DefaultAddress:output_type -> user.DefaultAddressResponse
-	27, // 27: user.UserService.GetPreference:output_type -> user.GetPreferenceResponse
-	28, // 28: user.UserService.ListPreference:output_type -> user.ListPreferenceResponse
-	29, // 29: user.UserService.CreatePreference:output_type -> user.CreatePreferenceResponse
-	30, // 30: user.UserService.UpdatePreference:output_type -> user.UpdatePreferenceResponse
-	31, // 31: user.UserService.DeletePreference:output_type -> user.DeletePreferenceResponse
-	16, // [16:32] is the sub-list for method output_type
-	0,  // [0:16] is the sub-list for method input_type
+	0,  // 0: user.UserService.MyProfile:input_type -> user.GetProfileRequest
+	0,  // 1: user.UserService.GetProfile:input_type -> user.GetProfileRequest
+	1,  // 2: user.UserService.ListProfile:input_type -> user.ListProfileRequest
+	2,  // 3: user.UserService.CreateProfile:input_type -> user.CreateProfileRequest
+	3,  // 4: user.UserService.UpdateProfile:input_type -> user.UpdateProfileRequest
+	4,  // 5: user.UserService.DeleteProfile:input_type -> user.DeleteProfileRequest
+	5,  // 6: user.UserService.GetAddress:input_type -> user.GetAddressRequest
+	6,  // 7: user.UserService.ListAddress:input_type -> user.ListAddressRequest
+	7,  // 8: user.UserService.CreateAddress:input_type -> user.CreateAddressRequest
+	8,  // 9: user.UserService.UpdateAddress:input_type -> user.UpdateAddressRequest
+	9,  // 10: user.UserService.DeleteAddress:input_type -> user.DeleteAddressRequest
+	10, // 11: user.UserService.DefaultAddress:input_type -> user.DefaultAddressRequest
+	11, // 12: user.UserService.GetPreference:input_type -> user.GetPreferenceRequest
+	12, // 13: user.UserService.ListPreference:input_type -> user.ListPreferenceRequest
+	13, // 14: user.UserService.CreatePreference:input_type -> user.CreatePreferenceRequest
+	14, // 15: user.UserService.UpdatePreference:input_type -> user.UpdatePreferenceRequest
+	15, // 16: user.UserService.DeletePreference:input_type -> user.DeletePreferenceRequest
+	16, // 17: user.UserService.MyProfile:output_type -> user.GetProfileResponse
+	16, // 18: user.UserService.GetProfile:output_type -> user.GetProfileResponse
+	17, // 19: user.UserService.ListProfile:output_type -> user.ListProfileResponse
+	18, // 20: user.UserService.CreateProfile:output_type -> user.CreateProfileResponse
+	19, // 21: user.UserService.UpdateProfile:output_type -> user.UpdateProfileResponse
+	20, // 22: user.UserService.DeleteProfile:output_type -> user.DeleteProfileResponse
+	21, // 23: user.UserService.GetAddress:output_type -> user.GetAddressResponse
+	22, // 24: user.UserService.ListAddress:output_type -> user.ListAddressResponse
+	23, // 25: user.UserService.CreateAddress:output_type -> user.CreateAddressResponse
+	24, // 26: user.UserService.UpdateAddress:output_type -> user.UpdateAddressResponse
+	25, // 27: user.UserService.DeleteAddress:output_type -> user.DeleteAddressResponse
+	26, // 28: user.UserService.DefaultAddress:output_type -> user.DefaultAddressResponse
+	27, // 29: user.UserService.GetPreference:output_type -> user.GetPreferenceResponse
+	28, // 30: user.UserService.ListPreference:output_type -> user.ListPreferenceResponse
+	29, // 31: user.UserService.CreatePreference:output_type -> user.CreatePreferenceResponse
+	30, // 32: user.UserService.UpdatePreference:output_type -> user.UpdatePreferenceResponse
+	31, // 33: user.UserService.DeletePreference:output_type -> user.DeletePreferenceResponse
+	17, // [17:34] is the sub-list for method output_type
+	0,  // [0:17] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name

@@ -10,6 +10,7 @@ import "user/preference.proto";
 
 service UserService {
   //Profile
+  rpc MyProfile(GetProfileRequest) returns (GetProfileResponse);
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
   rpc ListProfile(ListProfileRequest) returns (ListProfileResponse);
   rpc CreateProfile(CreateProfileRequest) returns (CreateProfileResponse);
